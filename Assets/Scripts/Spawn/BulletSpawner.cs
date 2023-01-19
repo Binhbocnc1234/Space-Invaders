@@ -30,11 +30,11 @@ public class BulletSpawner : Spawner
 
 
    public override Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation){
-    //  Transform prefab = this.Type[0];
-    //  Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
-    //  return newPrefab;
+     Transform Bullet = BulletType[0];
+     Transform newPrefab = Instantiate(Bullet, spawnPos, rotation);
+     return newPrefab;
 
-     return base.Spawn(prefab,spawnPos, rotation);
+     
 
     }
 

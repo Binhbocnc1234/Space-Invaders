@@ -19,6 +19,11 @@ public class Despawn : MonoBehaviour
         Destroy(transform.gameObject);
     }
 
+    public virtual void DespawnObject()
+    {
+        Destroy(transform.parent.gameObject);
+    }
+
 
     
     protected virtual bool CanDespawn(){
