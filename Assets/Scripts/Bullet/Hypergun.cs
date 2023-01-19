@@ -54,7 +54,7 @@ public class Hypergun : Temp
                 spawnPos = Playership.Instance.transform.position + offset;
                 rotation = Playership.Instance.transform.rotation;
                 List<Transform> LBulletType = BulletSpawner.BulletType;
-                Transform newBullet = BulletSpawner.Spawn(LBulletType[0], spawnPos, rotation);
+                Transform newBullet = BulletSpawner.Spawn(BulletSpawner.BulletType[0], spawnPos, rotation);
             }
         }
     }
