@@ -24,16 +24,19 @@ public class BulletSpawner : Spawner
    protected override void LoadPrefabs(){
       this.List = "BulletType";
       this.Type = new List<Transform>();
-      base.LoadPrefabs();
-      
+      base.LoadPrefabs();  
    }
+   public List<Transform> BulletType {get => Type;}
 
 
-   public virtual Transform Spawn(Vector3 spawnPos, Quaternion rotation){
-      Transform prefab = this.Type[0];
-      Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
-      newPrefab.gameObject.SetActive(true);
-      return newPrefab;
+   public override Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation){
+    //  Transform prefab = this.Type[0];
+    //  Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
+    //  return newPrefab;
+
+     return base.Spawn(prefab,spawnPos, rotation);
 
     }
+
+    
 }

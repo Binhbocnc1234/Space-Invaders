@@ -23,8 +23,9 @@ public class ShipShooting : MonoBehaviour
         this.shootTimer = 0;
         Vector3 spawnPos = transform.position;
         Quaternion rotation = transform.parent.rotation;
-
-        Transform newBullet = BulletSpawner.Instance.Spawn(spawnPos, rotation);
+        Transform prefab = BulletSpawner.Instance.BulletType[0];
+        
+        Transform newBullet = BulletSpawner.Instance.Spawn(prefab, spawnPos, rotation);
         newBullet.gameObject.SetActive(true);
     }
 

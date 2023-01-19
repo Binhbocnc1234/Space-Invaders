@@ -5,7 +5,7 @@ using UnityEngine;
 public class Despawn : MonoBehaviour
 {
 
-    [SerializeField] protected float disLimit = 70f;
+    [SerializeField] protected float disLimit = 40f;
     [SerializeField] protected float distance = 0;
     [SerializeField] protected Transform mainCam;
 
@@ -16,7 +16,7 @@ public class Despawn : MonoBehaviour
 
     protected virtual void Despawning(){
         if(!this.CanDespawn()){return;}
-        Destroy(transform.parent.gameObject);
+        Destroy(transform.gameObject);
     }
 
 

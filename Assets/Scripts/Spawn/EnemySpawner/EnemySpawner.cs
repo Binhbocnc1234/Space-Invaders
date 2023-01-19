@@ -14,11 +14,9 @@ public class EnemySpawner : Spawner
 
 
 
-
-
-   protected override void Reset(){
-     base.Reset();
-   } 
+  //  protected override void Reset(){
+  //    base.Reset();
+  //  } 
    
    protected override void LoadComponents(){
      base.LoadComponents();
@@ -28,8 +26,9 @@ public class EnemySpawner : Spawner
    protected override void LoadPrefabs(){
       this.List = "EnemyType";
       this.Type = new List<Transform>();
-      base.LoadPrefabs();
-      
+      base.LoadPrefabs(); 
    }
+
+   public List<Transform> type {get => Type;}
 
 }

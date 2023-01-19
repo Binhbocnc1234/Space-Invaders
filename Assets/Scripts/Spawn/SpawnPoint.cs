@@ -6,6 +6,8 @@ public class SpawnPoint : MonoBehaviour
 {
   [SerializeField] protected List<Transform> Points;
    
+
+
    protected virtual void Reset(){
      this.LoadPrefabs();
    } 
@@ -13,7 +15,8 @@ public class SpawnPoint : MonoBehaviour
    protected virtual void LoadPrefabs(){
 
       
-      Transform Obj = transform.Find("SpawnPoints");
+      Transform Obj = GameObject.Find("SpawnPoints").transform;
+      
 
       foreach(Transform prefab in Obj){
         this.Points.Add(prefab);

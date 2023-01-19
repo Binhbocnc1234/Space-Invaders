@@ -8,7 +8,10 @@ public class Spawner : MonoBehaviour
    [SerializeField] protected string List = "Type";
    [SerializeField] protected List<Transform> Type;
 
+   public List<Transform> type {get => Type;}
 
+
+   
    protected virtual void Reset(){
      this.LoadComponents();
    } 
@@ -31,6 +34,13 @@ public class Spawner : MonoBehaviour
      foreach(Transform prefab in this.Type){
         prefab.gameObject.SetActive(false);
      }
+   }
+
+   public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation){
+
+     Transform newPrefab = Instantiate(prefab, spawnPos, rotation);
+     return newPrefab;
+
    }
 
    

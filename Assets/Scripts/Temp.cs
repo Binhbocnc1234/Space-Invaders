@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Temp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected virtual void Reset(){
+     this.ResetValue();
+     this.LoadComponents();
+   }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+   protected virtual void ResetValue(){
+     // For override
+   }
+
+   
+
+   
+   protected virtual void LoadComponents(){
+     // For override
+   }
 }

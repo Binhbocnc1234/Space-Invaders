@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hypergun : MonoBehaviour
+public class Hypergun : Temp
 {
     // Start is called before the first frame update
+    [SerializeField] protected BulletSpawner bulletSpawner;
+    public BulletSpawner BulletSpawner { get => bulletSpawner; }
+    
+
+
     [SerializeField] protected int level = 1;
     protected float damage;
     Timer firerate = new Timer(0.5f);
     protected int bulletNum = 1;
-    void Start()
-    {
-        
-    }
+    
+
+
+    protected virtual void LoadBulletSpawner(){
+    if(this.bulletSpawner != null){return;}
+    this.bulletSpawner = Transform.FindObjectOfType<BulletSpawner>();
+   }
+
+   protected override void LoadComponents(){
+     base.LoadComponents();
+     this.LoadBulletSpawner();
+     
+   }
 
     // Update is called once per frame
     void Update()
@@ -39,7 +53,8 @@ public class Hypergun : MonoBehaviour
                 }
                 spawnPos = Playership.Instance.transform.position + offset;
                 rotation = Playership.Instance.transform.rotation;
-                Transform newBullet = BulletSpawner.Instance.Spawn(spawnPos, rotation);
+                List<Transform> LBulletType = BulletSpawner.BulletType;
+                Transform newBullet = BulletSpawner.Spawn(LBulletType[0], spawnPos, rotation);
             }
         }
     }
