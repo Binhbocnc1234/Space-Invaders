@@ -14,7 +14,7 @@ public class ItemCtrl : Temp
 
     protected override void LoadComponents()
     {
-        base.LoadComponents();
+        
         this.LoadDespawn();
         this.LoadItemInventory();
     }
@@ -29,7 +29,9 @@ public class ItemCtrl : Temp
     {
         if (this.itemInventory.itemProfile != null) return;
         ItemCode itemCode = ItemCodeParser.FromString(transform.name);
+        
         ItemProfileSO itemProfile = ItemProfileSO.FindByItemCode(itemCode);
+        
         this.itemInventory.itemProfile = itemProfile;
        
     }

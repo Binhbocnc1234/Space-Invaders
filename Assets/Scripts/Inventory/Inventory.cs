@@ -13,9 +13,9 @@ public class Inventory : MonoBehaviour
     ItemInventory itemInventory = this.GetItemByCode(itemCode);
 
     int newCount = itemInventory.itemCount + addCount;
-    if(newCount > itemInventory.maxStack){
-        return false;
-    }
+    // if(newCount > itemInventory.maxStack){
+    //     return false;
+    // }
 
     itemInventory.itemCount = newCount;
     return true;
@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour
         if(profile.itemCode != itemCode) continue;
         ItemInventory itemInventory = new ItemInventory{
             itemProfile = profile,
-            maxStack = profile.defaultMaxStack
+            // maxStack = profile.defaultMaxStack
 
         };
         this.items.Add(itemInventory);
