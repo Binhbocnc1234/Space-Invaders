@@ -41,12 +41,12 @@ TagManager:
   - name: Background
     uniqueID: 2817683297
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Ship
     uniqueID: 938477297
     locked: 0
   - name: Bullet
     uniqueID: 820782289
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
