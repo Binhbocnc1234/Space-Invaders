@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemDropSpawner : Spawner
 {
-    protected static ItemDropSpawner instance;
+   protected static ItemDropSpawner instance;
    public ItemDropSpawner Instance {get => instance;}
 
    private void Awake(){

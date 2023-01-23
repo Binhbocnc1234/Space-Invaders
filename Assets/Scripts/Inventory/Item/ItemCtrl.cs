@@ -14,7 +14,7 @@ public class ItemCtrl : Temp
 
     protected override void LoadComponents()
     {
-        
+        base.LoadComponents();
         this.LoadDespawn();
         this.LoadItemInventory();
     }

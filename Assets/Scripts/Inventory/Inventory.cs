@@ -1,11 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
   [SerializeField] protected int maxSlot = 70;
   [SerializeField] protected List<ItemInventory> items;
+
+  protected static Inventory inventory;
+
+   public static Inventory Invent {get => inventory;}
+
+   private void Awake(){
+     Inventory.inventory = this;
+
+     items = PlayerPrefsExtra.GetList<ItemInventory> ("items", new List<ItemInventory>());
+
+
+   }
+
+   private void Update(){
+
+     PlayerPrefsExtra.SetList("items", items);
+   }
+
+
+   
 
   
   

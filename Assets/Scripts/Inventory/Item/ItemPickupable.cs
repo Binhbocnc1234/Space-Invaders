@@ -9,6 +9,7 @@ public class ItemPickupable : ItemAbstract
   }
   
   public virtual ItemCode GetItemCode(){
+    
     return ItemPickupable.StringToItemCode(transform.parent.name);
 
   }
