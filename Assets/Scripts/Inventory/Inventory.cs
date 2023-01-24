@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 
      items = PlayerPrefsExtra.GetList<ItemInventory> ("items", new List<ItemInventory>());
 
-
+    DontDestroyOnLoad(gameObject);
    }
 
    private void Update(){
