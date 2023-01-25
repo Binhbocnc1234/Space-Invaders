@@ -6,7 +6,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
   [SerializeField] protected int maxSlot = 70;
-  [SerializeField] protected List<ItemInventory> items;
+  public List<ItemInventory> items;
 
   protected static Inventory inventory;
 

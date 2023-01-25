@@ -13,6 +13,8 @@ public class ItemProfileSO : ScriptableObject
 
 
   public string itemName = "Sth-name";
+  
+  public Sprite icon;
 //   public int defaultMaxStack = 7;
 
 

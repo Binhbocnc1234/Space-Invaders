@@ -4,10 +4,12 @@ using UnityEngine;
 
 public enum ItemCode
 {
+    
     NoItem = 0,
 
-    Iron = 1,
-    Nail = 2, 
+    Cog = 1,
+    Screw = 2,
+    Wire = 3, 
 
 }
 
