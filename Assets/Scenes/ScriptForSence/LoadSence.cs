@@ -13,6 +13,7 @@ public class LoadSence : MonoBehaviour
 
     public void Change2(){
       SceneManager.LoadScene("Menu");
+      Cursor.visible = true;
     }
 
 
