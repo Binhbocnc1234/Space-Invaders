@@ -13,11 +13,21 @@ public class Inventory : MonoBehaviour
    public static Inventory Invent {get => inventory;}
 
    private void Awake(){
-     Inventory.inventory = this;
+     CheckRepeat();
 
      items = PlayerPrefsExtra.GetList<ItemInventory> ("items", new List<ItemInventory>());
 
-    DontDestroyOnLoad(gameObject);
+     DontDestroyOnLoad(gameObject);
+   }
+
+
+   private void CheckRepeat(){
+     if(Inventory.inventory == null){
+       Inventory.inventory = this;
+     }
+     else if(Inventory.inventory != this){
+      Destroy(gameObject);
+     }
    }
 
    private void Update(){
