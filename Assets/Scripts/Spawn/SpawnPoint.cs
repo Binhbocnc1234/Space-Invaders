@@ -23,6 +23,6 @@ public class SpawnPoint : MonoBehaviour
   //     }
   //  }
   public virtual Vector3 GetRandom(){
-  return new Vector3(Random.Range(-Camera.main.orthographicSize, +Camera.main.orthographicSize), -GameContr.instance.camHeight);
+    return new Vector3(Random.Range(-Camera.main.orthographicSize, +Camera.main.orthographicSize), -GameContr.instance.camHeight);
   }
 }
