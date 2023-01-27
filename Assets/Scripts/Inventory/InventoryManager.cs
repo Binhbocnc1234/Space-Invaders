@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
 
 
     void Start(){
-      inventory =  Inventory.Invent.items;
+      inventory =  Inventory.Instance.items;
       
       DrawInventory(inventory); 
     }
