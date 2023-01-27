@@ -6,6 +6,7 @@ public class Playership : MonoBehaviour
 {
     // Start is called before the first frame update
     public List<Transform> skinShip;
+    public int usedSkinShip;
     public float health = 100;
     protected static Playership instance;
     public static Playership Instance{get => instance;}

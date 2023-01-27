@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class ItemLooter : Temp
 {
 //    [SerializeField] protected Inventory inventory;
-   [SerializeField] protected SphereCollider _collider;
-   [SerializeField] protected Rigidbody _rigidbody;
+   [SerializeField] protected CircleCollider2D _collider;
+   [SerializeField] protected Rigidbody2D _rigidbody;
 
 //    protected override void LoadComponents(){
 //     base.LoadComponents();
@@ -26,15 +26,15 @@ public class ItemLooter : Temp
 
    protected virtual void OnTriggerEnter(Collider collider){
     //  Debug.Log("SuongWA");
-     ItemPickupable itemPickupable = collider.GetComponent<ItemPickupable>();
+      ItemPickupable itemPickupable = collider.GetComponent<ItemPickupable>();
 
-     if(itemPickupable == null) return;
-    
+      if(itemPickupable == null) return;
+      
 
-     ItemCode itemCode = itemPickupable.GetItemCode();
-        if(Inventory.Invent.AddItem(itemCode,1)){
-            itemPickupable.Picked();
-        }
+      ItemCode itemCode = itemPickupable.GetItemCode();
+         if(Inventory.Invent.AddItem(itemCode,1)){
+               itemPickupable.Picked();
+         }
    }
 
 }

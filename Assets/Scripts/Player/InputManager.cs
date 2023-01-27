@@ -8,20 +8,15 @@ public class InputManager : MonoBehaviour
    protected static InputManager instance;
 
    public static InputManager Instance {get => instance;}
+   // GetMousePos
+   [HideInInspector] protected Vector3 MousePos;
+   [HideInInspector] public Vector3 MousePosition{get => MousePos;}
 
+   [SerializeField] protected float onShoot;
+   [HideInInspector] public float OnShoot{get => onShoot;}
    private void Awake(){
      InputManager.instance = this;
    }
-
-
-   // GetMousePos
-   [SerializeField] protected Vector3 MousePos;
-   public Vector3 MousePosition{get => MousePos;}
-
-
-   [SerializeField] protected float onShoot;
-   public float OnShoot{get => onShoot;}
-   
 
   
 
