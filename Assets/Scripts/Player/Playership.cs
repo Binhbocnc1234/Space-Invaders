@@ -7,7 +7,7 @@ public class Playership : MonoBehaviour
     // Start is called before the first frame update
     public List<Transform> skinShip;
     public int usedSkinShip;
-    public float health = 100;
+    public float mainhealth = 1000, health = 1000;
     protected static Playership instance;
     public static Playership Instance{get => instance;}
     [HideInInspector] int usedGun = 1;
