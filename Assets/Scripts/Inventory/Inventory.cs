@@ -8,8 +8,9 @@ public class Inventory : MonoBehaviour
   // [SerializeField] protected int maxSlot = 70;
   public List<ItemInventory> items;
 
-  protected static Inventory inventory;
-  public static Inventory Invent {get => inventory;}
+  protected static Inventory instance;
+
+   public static Inventory Instance {get => instance;}
 
    private void Awake(){
      CheckRepeat();
@@ -25,10 +26,10 @@ public class Inventory : MonoBehaviour
    }
 
    private void CheckRepeat(){
-     if(Inventory.inventory == null){
-       Inventory.inventory = this;
+     if(Inventory.instance == null){
+       Inventory.instance = this;
      }
-     else if(Inventory.inventory != this){
+     else if(Inventory.instance != this){
       Destroy(gameObject);
      }
    }

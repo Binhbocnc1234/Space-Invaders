@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour
     public List<ItemInventory> inventory;
 
     void Start(){
-      inventory =  Inventory.Invent.items;
+      inventory =  Inventory.Instance.items;
       
       DrawInventory(inventory); 
     }
