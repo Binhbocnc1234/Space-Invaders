@@ -18,7 +18,6 @@ public class InputManager : MonoBehaviour
      InputManager.instance = this;
    }
 
-  
 
    void Update(){
      this.GetMouseDown();

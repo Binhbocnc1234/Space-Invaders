@@ -7,7 +7,6 @@ using TMPro;
 public class InventorySlot : MonoBehaviour
 {
   protected static InventorySlot  InventorySlots;
-
   public static InventorySlot  inventorySlot {get => InventorySlots;}
 
   RectTransform rt;
@@ -17,8 +16,7 @@ public class InventorySlot : MonoBehaviour
 
      rt = GetComponent<RectTransform>();
 
-     
-     
+     rt.localScale = new Vector3 (1,1,1);
    }
 
    void Update(){
@@ -27,13 +25,9 @@ public class InventorySlot : MonoBehaviour
      }
    }
 
-
-
   public Image icon;
   public Text labelText;
   public Text stackSizeText;
-
-
 
   public void ClearSlot(){
     icon.enabled = false;

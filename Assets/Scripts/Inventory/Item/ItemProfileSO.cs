@@ -15,8 +15,6 @@ public class ItemProfileSO : ScriptableObject
 //   public int defaultMaxStack = 7;
 
 
-
-
 public static ItemProfileSO FindByItemCode(ItemCode itemCode)
     {
         var profiles = Resources.LoadAll("ItemProfiles", typeof(ItemProfileSO));
