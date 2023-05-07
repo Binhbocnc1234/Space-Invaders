@@ -9,9 +9,6 @@ public class ItemProfileSO : ScriptableObject
   public ItemCode itemCode = ItemCode.NoItem;
   public ItemType itemType = ItemType.NoType;
 
-
-
-
   public string itemName = "Sth-name";
   
   public Sprite icon;

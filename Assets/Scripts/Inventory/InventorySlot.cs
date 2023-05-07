@@ -15,15 +15,16 @@ public class InventorySlot : MonoBehaviour
    private void Awake(){
      InventorySlot.InventorySlots = this;
 
-     rt = GetComponent<RectTransform> ();
+     rt = GetComponent<RectTransform>();
+
      
      
    }
 
    void Update(){
-    if(rt.localScale.x != 1){
+     if(rt.localScale.x != 1){
       rt.localScale = new Vector3 (1,1,1);
-    }
+     }
    }
 
 

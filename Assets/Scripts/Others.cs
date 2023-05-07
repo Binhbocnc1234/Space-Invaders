@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Timer{
+    
     public float curTime=0;
     public float totalTime;
     public bool isEnd = true;

@@ -10,7 +10,10 @@ public class EnemySpawner : Spawner
 
    private void Awake(){
      EnemySpawner.instance = this;
+     
    }
+
+   
 
 
 
@@ -18,17 +21,26 @@ public class EnemySpawner : Spawner
   //    base.Reset();
   //  } 
    
+
    protected override void LoadComponents(){
      base.LoadComponents();
    }
+   
+   
 
-
+  
    protected override void LoadPrefabs(){
       this.List = "EnemyType";
       this.Type = new List<Transform>();
       base.LoadPrefabs(); 
    }
 
+    
+  
+   
+   
    public List<Transform> type {get => Type;}
 
 }
+
+

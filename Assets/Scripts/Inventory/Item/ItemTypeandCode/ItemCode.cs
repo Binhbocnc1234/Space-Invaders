@@ -4,9 +4,7 @@ using UnityEngine;
 
 public enum ItemCode
 {
-    
     NoItem = 0,
-
     Cog = 1,
     Screw = 2,
     Wire = 3, 

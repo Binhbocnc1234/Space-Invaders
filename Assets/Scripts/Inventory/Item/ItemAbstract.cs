@@ -11,11 +11,10 @@ public class ItemAbstract : Temp
 	{
 		this.LoadItemCtrl();
 	}
-
+	
 	protected virtual void LoadItemCtrl()
 	{
 		if (this.itemCtrl != null) return;
 		this.itemCtrl = transform.parent.GetComponent<ItemCtrl>();
-		
 	}
 }

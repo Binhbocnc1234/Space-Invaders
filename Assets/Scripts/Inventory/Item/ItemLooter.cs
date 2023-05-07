@@ -22,19 +22,20 @@ public class ItemLooter : Temp
 //     this.inventory = transform.parent.GetComponent<Inventory>();
 
 //    }
+   
 
-
-   protected virtual void OnTriggerEnter(Collider collider){
-    //  Debug.Log("SuongWA");
+   protected virtual void OnTriggerEnter2D(Collider2D collider){
+     
       ItemPickupable itemPickupable = collider.GetComponent<ItemPickupable>();
 
       if(itemPickupable == null) return;
       
-
+      
       ItemCode itemCode = itemPickupable.GetItemCode();
          if(Inventory.Invent.AddItem(itemCode,1)){
                itemPickupable.Picked();
          }
    }
+   
 
 }

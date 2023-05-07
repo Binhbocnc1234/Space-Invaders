@@ -135,7 +135,7 @@ public static class PlayerPrefsExtra
 
 	public static void SetList <T> (string key, List<T> value)
 	{
-		Set (key, new ListWrapper<T> { list = value });
+		Set(key, new ListWrapper<T> { list = value });
 	}
 
 	#endregion
@@ -164,12 +164,12 @@ public static class PlayerPrefsExtra
 
 	static T Get<T> (string key, T defaultValue)
 	{
-		return JsonUtility.FromJson <T> (PlayerPrefs.GetString (key, JsonUtility.ToJson (defaultValue)));
+		return JsonUtility.FromJson <T> (PlayerPrefs.GetString (key, JsonUtility.ToJson(defaultValue)));
 	}
 
 	static void Set<T> (string key, T value)
 	{
-		PlayerPrefs.SetString (key, JsonUtility.ToJson (value));
+		PlayerPrefs.SetString(key, JsonUtility.ToJson (value));
 	}
 
 }

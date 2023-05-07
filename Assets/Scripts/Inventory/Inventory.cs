@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-  [SerializeField] protected int maxSlot = 70;
+  // [SerializeField] protected int maxSlot = 70;
   public List<ItemInventory> items;
 
   protected static Inventory inventory;
-
-   public static Inventory Invent {get => inventory;}
+  public static Inventory Invent {get => inventory;}
 
    private void Awake(){
      CheckRepeat();
@@ -19,7 +18,11 @@ public class Inventory : MonoBehaviour
 
      DontDestroyOnLoad(gameObject);
    }
+   
+   private void Update(){
 
+     PlayerPrefsExtra.SetList("items", items);
+   }
 
    private void CheckRepeat(){
      if(Inventory.inventory == null){
@@ -29,14 +32,6 @@ public class Inventory : MonoBehaviour
       Destroy(gameObject);
      }
    }
-
-   private void Update(){
-
-     PlayerPrefsExtra.SetList("items", items);
-   }
-
-
-   
 
   
   

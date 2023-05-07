@@ -8,9 +8,6 @@ public class InventoryManager : MonoBehaviour
     
     public List<ItemInventory> inventory;
 
-    
-
-
     void Start(){
       inventory =  Inventory.Invent.items;
       
@@ -21,11 +18,7 @@ public class InventoryManager : MonoBehaviour
         for(int i = 0; i < inventory.Count; i++){
             var NewSlot = Instantiate(slotPrefab);
 
-            NewSlot.transform.SetParent(transform, true);
-            
-
-
-            
+            NewSlot.transform.SetParent(transform, true); 
 
             InventorySlot.inventorySlot.DrawSlot(inventory[i]);
                     

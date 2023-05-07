@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ShipMov : MonoBehaviour
 {
+  [SerializeField] PlayerInput playerInput;
+  
+
+
   [SerializeField] protected Vector3 worldPos;
   [SerializeField] protected float speed = 5.0f;
 
@@ -19,8 +23,9 @@ public class ShipMov : MonoBehaviour
     this.worldPos.z = 0;
     this.Moving();
    
-
   }
+  
+
 
   protected virtual void Moving(){
     Vector3 newPos = Vector3.Lerp(transform.position, worldPos, this.speed);

@@ -8,7 +8,9 @@ public class GameContr : MonoBehaviour
     protected static GameContr _instance;
     [HideInInspector] public static GameContr instance{get => _instance;}
     [HideInInspector] public float camHeight;
-
+     
+    
+    
     void Start()
     {
         _instance = this;
