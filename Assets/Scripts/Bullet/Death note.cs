@@ -37,7 +37,7 @@ public class Deathnote : MonoBehaviour
         List<Transform> LBulletType = BulletSpawner.BulletType;
 
         if (isExtraBullet && extrabulletTimer.Count()){
-            BulletSpawner.Instance.Spawn(LBulletType[1],spawnPos, rotation);
+            BulletSpawner.Instance.Spawn(LBulletType[1], spawnPos, rotation);
             isExtraBullet = false;
         }
         if (firerate.Count(false) && InputManager.Instance.OnShoot == 1){

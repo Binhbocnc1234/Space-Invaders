@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : Spawner
-
 {
    protected static EnemySpawner instance;
    public EnemySpawner Instance {get => instance;}
@@ -12,9 +11,6 @@ public class EnemySpawner : Spawner
      EnemySpawner.instance = this;
      
    }
-
-   
-
 
 
   //  protected override void Reset(){
@@ -26,8 +22,6 @@ public class EnemySpawner : Spawner
      base.LoadComponents();
    }
    
-   
-
   
    protected override void LoadPrefabs(){
       this.List = "EnemyType";
@@ -35,9 +29,6 @@ public class EnemySpawner : Spawner
       base.LoadPrefabs(); 
    }
 
-    
-  
-   
    
    public List<Transform> type {get => Type;}
 

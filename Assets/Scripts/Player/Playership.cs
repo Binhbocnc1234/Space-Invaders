@@ -11,16 +11,21 @@ public class Playership : MonoBehaviour
     protected static Playership instance;
     public static Playership Instance{get => instance;}
     [HideInInspector] int usedGun = 1;
+
+    // Ship position
+    public Vector3 ship_pos;
+    
+
     void Start()
     {
         instance = this;
-
+        // ship_pos = this.transform.Find("The dawn").position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
     void OnTriggerEnter2D(Collider2D other){
 

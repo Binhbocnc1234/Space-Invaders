@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ShipMov : MonoBehaviour
 {
-  // [SerializeField] PlayerInput playerInput;
+  [SerializeField] PlayerInput playerInput;
   
 
   // Singleton 
-  //  protected static ShipMov instance;
-  //  public static ShipMov Instance {get => instance;}
-  //   private void Awake(){
-  //    ShipMov.instance = this;
-  //  }
+  protected static ShipMov instance;
+  public static ShipMov Instance {get => instance;}
+  private void Awake(){
+     ShipMov.instance = this;
+  }
 
 
 
@@ -23,7 +23,7 @@ public class ShipMov : MonoBehaviour
   [SerializeField] protected Renderer meshRender;
   public Vector2 offset;
 
-  private bool isResetting = false;
+  public bool isResetting = false;
 
 
 

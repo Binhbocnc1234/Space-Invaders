@@ -22,25 +22,42 @@ public class EnemyRandom : Temp
 
 
    protected virtual void Start(){
-    this.EnemySpawning();
+    // this.EnemySpawning();
+    StartCoroutine(EnemyTimer());
+   }
+
+   IEnumerator EnemyTimer(){
+    while(true){
+      yield return new WaitForSeconds(2.0f);
+      EnemySpawning();
+    }
    }
 
    protected virtual void EnemySpawning(){
      Vector3 pos = this.enemyCtrl.SpawnPoint.GetRandom();
 
      List<Transform> Enemy = this.enemyCtrl.EnemySpawner.type;
-     int rand = Random.Range(0,100);
+     int rand = Random.Range(0, Enemy.Count);
+     Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[rand], pos, Quaternion.Euler(0,0,0));
+     obj.gameObject.SetActive(true);
 
-     if(rand <= 10){
-       Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[1], pos, Quaternion.Euler(0,0,0));
-       obj.gameObject.SetActive(true);
-       Invoke(nameof(this.EnemySpawning) , 1f);
-     }
-     else{
-       Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[0], pos, Quaternion.Euler(0,0,0));
-       obj.gameObject.SetActive(true);
-       Invoke(nameof(this.EnemySpawning) , 1f); 
-     }
+    //  int rand = Random.Range(0,100);
+
+    //  if(rand <= 10){
+    //    Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[1], pos, Quaternion.Euler(0,0,0));
+       
+    //    obj.gameObject.SetActive(true);
+    //    Invoke(nameof(this.EnemySpawning) , 1f);
+    //  }
+    //  else{
+    //    Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[0], pos, Quaternion.Euler(0,0,0));
+    //    obj.gameObject.SetActive(true);
+    //    Invoke(nameof(this.EnemySpawning) , 1f); 
+    //  }
+
+    
+
+
   }
   protected void GetSpawnPoint(int num){
     

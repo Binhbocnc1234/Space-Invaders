@@ -16,9 +16,6 @@ public class EnemyCtrl : Temp
     public SpawnPoint SpawnPoint { get => spawnPoint; }
 
 
-
-
-
     protected override void LoadComponents(){
      base.LoadComponents();
      this.LoadEnemySpawner();

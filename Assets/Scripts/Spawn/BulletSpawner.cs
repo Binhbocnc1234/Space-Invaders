@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BulletSpawner : Spawner
 {
-
+  // Singleton
   [SerializeField] protected static BulletSpawner instance;
   public static BulletSpawner Instance {get => instance;}
-  
   private void Awake(){
     BulletSpawner.instance = this;
   }
@@ -33,9 +32,6 @@ public class BulletSpawner : Spawner
      Transform Bullet = BulletType[0];
      Transform newPrefab = Instantiate(Bullet, spawnPos, rotation);
      return newPrefab;
-
-     
-
     }
 
     

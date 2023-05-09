@@ -6,7 +6,7 @@ public class EnemyMove : ObjectMove
 {
   protected override void ResetValue(){
     base.ResetValue();
-    this.MoveSpeed = 3f;
+    this.MoveSpeed = 1.5f;
     this.direction = Vector3.down;
   }  
 

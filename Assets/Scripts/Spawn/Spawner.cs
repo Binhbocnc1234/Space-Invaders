@@ -22,11 +22,9 @@ public class Spawner : MonoBehaviour
 
    protected virtual void LoadPrefabs(){
       Transform Obj = transform.Find(List);
-
       foreach(Transform prefab in Obj){
         this.Type.Add(prefab);
       }
-
       this.HidePrefabs();
    }
 

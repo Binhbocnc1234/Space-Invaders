@@ -11,10 +11,10 @@ public class GameContr : MonoBehaviour
      
     
     
-    void Start()
+    void Awake()
     {
         _instance = this;
-        camHeight =Camera.main.orthographicSize * Camera.main.aspect; 
+        camHeight = Camera.main.orthographicSize * Camera.main.aspect; 
     }
 
     // Update is called once per frame
