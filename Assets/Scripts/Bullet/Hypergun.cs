@@ -17,7 +17,7 @@ public class Hypergun : Temp
 
     [SerializeField] protected int level = 1;
     protected float damage = 120;//base damage;
-    Timer firerate = new Timer(0.5f);
+    Timer firerate = new Timer(1.5f);
     protected int bulletNum = 1;
     
 
@@ -69,7 +69,7 @@ public class Hypergun : Temp
                 
                 rotation = Playership.Instance.transform.rotation;
                 List<Transform> LBulletType = BulletSpawner.BulletType;
-                Transform newBullet = BulletSpawner.Spawn(BulletSpawner.BulletType[0], spawnPos, rotation);
+                Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.hyperGun, spawnPos, rotation);
                 newBullet.GetChild(0).gameObject.SetActive(true);
                 
             }
