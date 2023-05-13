@@ -51,7 +51,7 @@ public class Hypergun : Temp
         damage = (120 + 20*(level - 1))/ bulletNum;
     }
     void Shooting(){
-        if (firerate.Count(false) && InputManager.Instance.OnShoot == 1 && ShipMov.Instance.isResetting == true){
+        if (InputManager.Instance.OnShoot == 1 && ShipMov.Instance.isResetting == true && firerate.Count(false)){
             
             firerate.Reset();
             // offset : distance between new and previous bullet 
@@ -69,7 +69,8 @@ public class Hypergun : Temp
                 
                 rotation = Playership.Instance.transform.rotation;
                 List<Transform> LBulletType = BulletSpawner.BulletType;
-                Transform newBullet = BulletSpawner.Spawn(BulletSpawner.BulletType[0], spawnPos, rotation);
+
+                Transform newBullet = BulletSpawner.Spawn(BulletSpawner.hyperGun, spawnPos, rotation);
                 newBullet.GetChild(0).gameObject.SetActive(true);
                 
             }

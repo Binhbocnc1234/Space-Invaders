@@ -7,6 +7,8 @@ public class BulletSpawner : Spawner
   // Singleton
   [SerializeField] protected static BulletSpawner instance;
   public static BulletSpawner Instance {get => instance;}
+
+  public static string hyperGun = "hyperGun";
   private void Awake(){
     BulletSpawner.instance = this;
   }
@@ -28,11 +30,12 @@ public class BulletSpawner : Spawner
    public List<Transform> BulletType {get => Type;}
 
 
-   public override Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation){
-     Transform Bullet = BulletType[0];
-     Transform newPrefab = Instantiate(Bullet, spawnPos, rotation);
-     return newPrefab;
-    }
+  //  public override Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation){
+  //    Transform Bullet = BulletType[0];
+  //    Transform newPrefab = Instantiate(Bullet, spawnPos, rotation);
+  //    return newPrefab;
+  //   }
+
 
     
 }
