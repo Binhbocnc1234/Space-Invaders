@@ -5,10 +5,10 @@ using UnityEngine;
 public class Despawn : MonoBehaviour
 {
 
-    [SerializeField] protected float disLimit = 5f;
+    [SerializeField] protected float disLimit = 40f;
     [SerializeField] protected float distance = 0;
     [SerializeField] protected Transform mainCam;
-
+    
     protected virtual void FixedUpdate(){
         this.Despawning();
     }
@@ -23,8 +23,6 @@ public class Despawn : MonoBehaviour
     {
         Destroy(transform.parent.gameObject);
     }
-
-
     
     protected virtual bool CanDespawn(){
         

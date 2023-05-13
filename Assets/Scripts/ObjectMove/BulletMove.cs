@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletMove : ObjectMove
 {
    protected override void ResetValue(){
-    // Kế thừa
     // base.ResetValue();
     this.MoveSpeed = 7f;
   }

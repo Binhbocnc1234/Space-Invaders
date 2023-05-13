@@ -44,8 +44,6 @@ public class Spawner : MonoBehaviour
    }
 
    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation){
-
-     
      Transform newPrefab = this.GetObjectFromPool(prefab);
      
      newPrefab.SetPositionAndRotation(spawnPos, rotation);
@@ -67,14 +65,16 @@ public class Spawner : MonoBehaviour
 
    protected virtual Transform GetObjectFromPool(Transform prefab)
     {
-        foreach(Transform poolObj in this.poolObjs)
+        for(int i = 0; i < poolObjs.Count; i++)
         {
-            if (poolObj == null){continue;}
+            if (poolObjs[i] == null){
+              this.poolObjs.Remove(poolObjs[i]);
+            }
 
-            if (poolObj.name == prefab.name){
-                this.poolObjs.Remove(poolObj);
-
-                return poolObj;
+            if (poolObjs[i].name == prefab.name){
+                Transform a = poolObjs[i]; 
+                this.poolObjs.Remove(poolObjs[i]);
+                return a; // 
             }
         }
 
@@ -96,11 +96,9 @@ public class Spawner : MonoBehaviour
 
      public virtual void Despawn(Transform obj)
     {
-        
         this.poolObjs.Add(obj);
-
-        obj.GetChild(0).gameObject.SetActive(false);
-
+        
+        obj.GetChild(0).gameObject.SetActive(false); 
 
         this.spawnedCount--;
     }
