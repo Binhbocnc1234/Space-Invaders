@@ -12,13 +12,17 @@ public static class ScenceName{
 public class LoadSence : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void Change1()
+    public void ChangeToPlay()
     {
       SceneManager.LoadScene("Campain");  
     }
 
-    public void Change2(){
+    public void ChangeToMenu(){
       SceneManager.LoadScene("Menu");
+      Cursor.visible = true;
+    }
+    public void ChangeToSetting(){
+      SceneManager.LoadScene("Setting");
       Cursor.visible = true;
     }
     public void Change(string name){
