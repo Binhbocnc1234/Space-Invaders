@@ -28,7 +28,6 @@ public class ItemLooter : Temp
       _collider = GetComponent<CircleCollider2D>(); _rigidbody = GetComponent<Rigidbody2D>();
    }
    protected virtual void OnTriggerEnter2D(Collider2D collider){
-    //  Debug.Log("SuongWA");
       ItemPickupable itemPickupable = collider.GetComponent<ItemPickupable>();
 
       if(itemPickupable == null) return;

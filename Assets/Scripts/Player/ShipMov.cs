@@ -14,11 +14,8 @@ public class ShipMov : MonoBehaviour
      ShipMov.instance = this;
   }
 
-
-
-
   [SerializeField] protected Vector3 worldPos;
-  [SerializeField] protected float speed = 5.0f;
+  [SerializeField] protected float speed = 10.0f;
   
   [SerializeField] protected Renderer meshRender;
   public Vector2 offset;

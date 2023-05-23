@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class trung gian
 public class ItemAbstract : Temp
 {
     [SerializeField] protected ItemCtrl itemCtrl;

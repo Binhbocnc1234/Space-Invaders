@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ItemPickupable : ItemAbstract
 {
+  // Support getItemCode
   public static ItemCode StringToItemCode(string itemName){
     return (ItemCode)System.Enum.Parse(typeof(ItemCode), itemName);
   }
@@ -13,7 +14,8 @@ public class ItemPickupable : ItemAbstract
     return ItemPickupable.StringToItemCode(transform.parent.name);
 
   }
-
+  
+  // Destroy -> add to pool obj
   public virtual void Picked()
   {
         this.itemCtrl.Despawn.DespawnObject();
