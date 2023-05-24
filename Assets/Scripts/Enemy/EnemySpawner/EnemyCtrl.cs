@@ -15,11 +15,14 @@ public class EnemyCtrl : Temp
     [SerializeField] protected SpawnPoint spawnPoint;
     public SpawnPoint SpawnPoint { get => spawnPoint; }
 
+ 
+
 
     protected override void LoadComponents(){
      base.LoadComponents();
      this.LoadEnemySpawner();
      this.LoadSpawnPoint();
+     
    }
 
    protected virtual void LoadEnemySpawner(){
@@ -32,5 +35,7 @@ public class EnemyCtrl : Temp
     if(this.spawnPoint != null){return;}
     this.spawnPoint = Transform.FindObjectOfType<SpawnPoint>();
    }
+
+  
 
 }

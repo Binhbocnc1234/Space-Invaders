@@ -43,6 +43,7 @@ public class Spawner : MonoBehaviour
      }
    }
 
+  
    public virtual Transform Spawn(Transform prefab, Vector3 spawnPos, Quaternion rotation){
      Transform newPrefab = this.GetObjectFromPool(prefab);
      
@@ -74,7 +75,7 @@ public class Spawner : MonoBehaviour
             if (poolObjs[i].name == prefab.name){
                 Transform a = poolObjs[i]; 
                 this.poolObjs.Remove(poolObjs[i]);
-                return a; // 
+                return a;
             }
         }
 

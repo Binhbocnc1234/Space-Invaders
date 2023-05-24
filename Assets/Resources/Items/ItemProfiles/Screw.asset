@@ -15,4 +15,6 @@ MonoBehaviour:
   itemCode: 2
   itemType: 1
   itemName: Screw
+  description: An useful item
   icon: {fileID: 21300000, guid: ec3569959e9cd9745a86c7b290844b34, type: 3}
+  dropChance: 10

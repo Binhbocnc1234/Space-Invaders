@@ -9,6 +9,9 @@ public class ItemProfileSO : ScriptableObject
   public string itemName = "Sth-name";
   public string description = "An useful item";
   public Sprite icon;
+
+  public int dropChance;
+
 public static ItemProfileSO FindByItemCode(ItemCode itemCode)
 {
     var profiles = Resources.LoadAll("ItemProfiles", typeof(ItemProfileSO));

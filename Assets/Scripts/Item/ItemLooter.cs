@@ -34,6 +34,8 @@ public class ItemLooter : Temp
       Inventory.Instance.AddItem(itemCode,1);
       itemPickupable.Picked();
    }
+
+   
    
 
 }

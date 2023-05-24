@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c67fc569cb45c479c525bf5defb71f, type: 3}
-  m_Name: Wire
+  m_Script: {fileID: 11500000, guid: fac5f106c821e3c4c91dde23b8c8fc7f, type: 3}
+  m_Name: Enemy2
   m_EditorClassIdentifier: 
-  itemCode: 3
-  itemType: 1
-  itemName: Wire
-  description: An useful item
-  icon: {fileID: 21300000, guid: b102269a66c5b3042ae9acd5bcc2c4fe, type: 3}
-  dropChance: 100
+  health: 1000
+  speed: 1.5
+  itemContain:
+  - {fileID: 11400000, guid: 55a4fd0e003b8b942abf0be7fd7547e8, type: 2}
+  enemyType: 1

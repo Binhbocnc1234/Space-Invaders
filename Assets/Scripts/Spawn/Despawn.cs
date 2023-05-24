@@ -21,7 +21,10 @@ public class Despawn : MonoBehaviour
 
     public virtual void DespawnObject()
     {
-        Destroy(transform.parent.gameObject);
+        if(gameObject == null){
+            Debug.Log("NOO");
+        }
+        Destroy(gameObject);
     }
     
     protected virtual bool CanDespawn(){

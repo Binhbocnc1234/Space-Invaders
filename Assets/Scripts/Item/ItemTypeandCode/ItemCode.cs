@@ -8,7 +8,6 @@ public enum ItemCode
     Cog = 1,
     Screw = 2,
     Wire = 3, 
-
 }
 
 public class ItemCodeParser{
