@@ -18,7 +18,6 @@ public class EnemySO : ScriptableObject
 public enum EnemyType
 {
    None = 0,
-   
    Another = 1,
    
 }

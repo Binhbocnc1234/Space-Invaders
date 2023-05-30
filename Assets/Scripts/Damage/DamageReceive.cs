@@ -12,10 +12,8 @@ public class DamageReceive : MonoBehaviour
     [SerializeField] public float hp = 1;
     [SerializeField] public float maxHealth;
 
-    [SerializeField] public Transform healthbar;
-
-    float Size = 1;
-
+    
+    // Link EnemySO
     public EnemySO enemy;
 
     protected virtual void Start(){
@@ -33,8 +31,6 @@ public class DamageReceive : MonoBehaviour
             this.hp = 0; 
         }
         this.CheckDead();
-        Size -= (detuct/maxHealth);
-        healthbar.localScale = new Vector2(Size , 1f);
     }
 
     protected virtual bool Isdead(){
@@ -75,7 +71,7 @@ public class DamageReceive : MonoBehaviour
             GameObject dp = Resources.Load("Items/ItemPrefab/" + s) as GameObject;
             
             Vector3 dropPos = transform.position;
-            Quaternion dropRot = transform.rotation;
+            Quaternion dropRot = Quaternion.identity;
             Instantiate(dp, dropPos, dropRot);
         }
        
