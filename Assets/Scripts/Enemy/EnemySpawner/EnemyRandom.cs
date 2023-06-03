@@ -43,23 +43,6 @@ public class EnemyRandom : Temp
      Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[rand], pos, Quaternion.Euler(0,0,0));
      obj.gameObject.SetActive(true);
 
-    //  int rand = Random.Range(0,100);
-
-    //  if(rand <= 10){
-    //    Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[1], pos, Quaternion.Euler(0,0,0));
-       
-    //    obj.gameObject.SetActive(true);
-    //    Invoke(nameof(this.EnemySpawning) , 1f);
-    //  }
-    //  else{
-    //    Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[0], pos, Quaternion.Euler(0,0,0));
-    //    obj.gameObject.SetActive(true);
-    //    Invoke(nameof(this.EnemySpawning) , 1f); 
-    //  }
-
-    
-
-
   }
   protected void GetSpawnPoint(int num){
     

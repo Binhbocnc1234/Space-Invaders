@@ -12,7 +12,6 @@ public class EnemyZMove : ObjectMove
    protected override void ResetValue(){
     base.ResetValue();
     this.MoveSpeed = 1f;
-    this.direction = Vector3.down;
     this.frequency = 2f;
     this.magnitude = 5f;
   }  

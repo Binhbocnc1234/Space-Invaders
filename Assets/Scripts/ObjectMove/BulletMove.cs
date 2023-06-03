@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BulletMove : ObjectMove
 {
    protected override void ResetValue(){

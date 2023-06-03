@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac5f106c821e3c4c91dde23b8c8fc7f, type: 3}
   m_Name: Enemy1
   m_EditorClassIdentifier: 
-  health: 1000
+  health: 240
   speed: 1.5
+  typeMove: {fileID: 3944730793284467480, guid: 3aa246eadda9c6b4cb192511efa9ac5f, type: 3}
   itemContain:
   - {fileID: 11400000, guid: 55a4fd0e003b8b942abf0be7fd7547e8, type: 2}
   - {fileID: 11400000, guid: a4a3cafe87237f240be186d0e41bfc48, type: 2}
