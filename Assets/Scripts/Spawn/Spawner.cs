@@ -54,6 +54,7 @@ public class Spawner : MonoBehaviour
      return newPrefab;
    }
 
+
    public virtual Transform Spawn(string prefabName, Vector3 spawnPos, Quaternion rotation){
      Transform prefab = this.GetPrefabByName(prefabName);
      if(prefab == null){

@@ -22,6 +22,7 @@ public class EnemySO : ScriptableObject
 public enum EnemyType
 {
    None = 0,
-   Another = 1,
+   Outscreen = 1,
+   Static = 2,
    
 }

@@ -73,6 +73,8 @@ public class DamageReceive : MonoBehaviour
             Vector3 dropPos = transform.position;
             Quaternion dropRot = Quaternion.identity;
             Instantiate(dp, dropPos, dropRot);
+            
+
         }
        
     }
