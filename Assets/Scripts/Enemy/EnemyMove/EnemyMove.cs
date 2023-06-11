@@ -5,14 +5,14 @@ using Dreamteck.Splines;
 
 public class EnemyMove : ObjectMove
 {
-  protected DamageReceive damageReceive;
+  protected EnemyDD dd;
   
 
   protected override void ResetValue(){
     base.ResetValue();
-    this.damageReceive = GetComponentInChildren<DamageReceive>();
+    this.dd = GetComponentInChildren<EnemyDD>();
     this.MoveSpeed = 3f;
-    this.TypeMove = damageReceive.enemy.typeMove;
+    this.TypeMove = dd.enemy.typeMove;
     // this.TypeMove = wave.Orbit[this.wave.wave].GetComponent<SplineComputer>();
   }  
 

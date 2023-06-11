@@ -191,12 +191,12 @@ MonoBehaviour:
     size: 1
     percent: 0
   _clipToSample:
-    position: {x: -0.3386035, y: -18.632261, z: -25.185747}
+    position: {x: -0.3386036, y: -18.632261, z: -25.185747}
     up: {x: 0, y: 0, z: 1}
-    forward: {x: 0.25536773, y: -0.9668441, z: 0}
+    forward: {x: 0.2553679, y: -0.96684396, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
-    percent: 0.19133207930458918
+    percent: 0.19133207201957703
   _loopSamples: 0
   _clipFrom: 0
   _clipTo: 0.19133207201957703
@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 1441393085280787423}
   - component: {fileID: 1441393085280787422}
   - component: {fileID: 1441393085280787421}
+  - component: {fileID: 704728163259358636}
   m_Layer: 0
   m_Name: DamageReceive
   m_TagString: Untagged
@@ -333,4 +334,16 @@ MonoBehaviour:
   Despawn: {fileID: 1441393084904577061}
   hp: 1
   maxHealth: 0
+--- !u!114 &704728163259358636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441393085280787392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4552cb0ec58384fa3cd828c6100dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 80488ce709749c64d95e6b658c6922f5, type: 2}

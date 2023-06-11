@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 1441393085280787423}
   - component: {fileID: 1441393085280787422}
   - component: {fileID: 1441393085280787421}
+  - component: {fileID: 2743264623908131958}
   m_Layer: 0
   m_Name: DamageReceive
   m_TagString: Untagged
@@ -333,4 +334,16 @@ MonoBehaviour:
   Despawn: {fileID: 1441393084904577061}
   hp: 1
   maxHealth: 0
+--- !u!114 &2743264623908131958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441393085280787392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4552cb0ec58384fa3cd828c6100dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 80488ce709749c64d95e6b658c6922f5, type: 2}
