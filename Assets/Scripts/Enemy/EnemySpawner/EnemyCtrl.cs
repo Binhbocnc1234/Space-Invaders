@@ -6,7 +6,7 @@ using UnityEngine;
 //        |
 // mũi tên chỉ xuống
 
-// Use only to load component và load liên kết =)) méo bt liên kết TA là gì
+// Use only to load component và load linked
 public class EnemyCtrl : Temp
 {
     [SerializeField] protected EnemySpawner enemySpawner;

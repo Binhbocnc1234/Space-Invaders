@@ -15,7 +15,7 @@ public class ShipMov : MonoBehaviour
   }
 
   [SerializeField] protected Vector3 worldPos;
-  [SerializeField] protected float speed = 10.0f;
+  [SerializeField] protected float speed = 0.904f;
   
   [SerializeField] protected Renderer meshRender;
   public Vector2 offset;
@@ -46,7 +46,14 @@ public class ShipMov : MonoBehaviour
     }
     this.BackGround();
     this.worldPos.z = 0;
-    this.Moving();
+    if(InputManager.Instance.CheckMouse()){
+       this.Moving(this.speed);
+    }
+    else{
+       this.Moving(10f);
+    }
+    
+    
   }
 
   private void SetMousePositionCenter()
@@ -75,8 +82,10 @@ public class ShipMov : MonoBehaviour
     offset = offset + new Vector2(0, 0.1f*Time.deltaTime);
     meshRender.material.mainTextureOffset = offset;
   }
-  protected virtual void Moving(){
-    Vector3 newPos = Vector3.Lerp(transform.position, worldPos, this.speed);
+  protected virtual void Moving(float speed){
+    Vector3 newPos = Vector3.Lerp(transform.position, worldPos, speed * Time.deltaTime);
     transform.position = newPos;
   }
+
+  
 }

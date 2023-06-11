@@ -14,6 +14,8 @@ public class InputManager : MonoBehaviour
 
    [SerializeField] protected float onShoot;
    [HideInInspector] public float OnShoot{get => onShoot;}
+
+   public float startTime = 0f, endTime = 0f;
    private void Awake(){
      InputManager.instance = this;
    }
@@ -31,5 +33,19 @@ public class InputManager : MonoBehaviour
 
    protected virtual void GetMousePos(){
      this.MousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+   }
+
+   public virtual bool CheckMouse(){
+     if(Input.GetMouseButtonDown(0)){
+      startTime = Time.time;  
+     }
+     if(Input.GetMouseButtonUp(0)){
+       endTime = Time.time;
+     }
+
+     if(endTime - startTime > 0.5f){
+        return true;
+     }
+     return false;
    }
 }

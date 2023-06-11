@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Dreamteck.Splines;
 
 public class EnemyMove : ObjectMove
 {
+  protected EnemyDD dd;
+  
+
   protected override void ResetValue(){
     base.ResetValue();
-    this.MoveSpeed = 1.5f;
-    this.direction = Vector3.down;
+    this.dd = GetComponentInChildren<EnemyDD>();
+    this.MoveSpeed = 3f;
+    this.TypeMove = dd.enemy.typeMove;
+    // this.TypeMove = wave.Orbit[this.wave.wave].GetComponent<SplineComputer>();
   }  
 
   protected override void Move(){
-    transform.Translate(this.direction * this.MoveSpeed * Time.deltaTime); 
+    SplineFollower follower = GetComponent<SplineFollower>();
+    follower.followSpeed = MoveSpeed;
+    follower.spline = TypeMove;
+    
   }
 }

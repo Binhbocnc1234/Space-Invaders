@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Dreamteck.Splines;
 
 public abstract class ObjectMove : Temp
 {
@@ -8,6 +9,8 @@ public abstract class ObjectMove : Temp
      [SerializeField] protected float MoveSpeed = 4;
 
     [SerializeField] protected Vector3 direction = Vector3.up;
+    [SerializeField] protected SplineComputer TypeMove;
+
 
     // for zigzac only
      

@@ -17,7 +17,7 @@ public class Hypergun : Temp
 
     [SerializeField] protected int level = 1;
     protected float damage = 120;//base damage;
-    Timer firerate = new Timer(0.5f);
+    Timer firerate = new Timer(0.1f);
     protected int bulletNum = 1;
     
 
