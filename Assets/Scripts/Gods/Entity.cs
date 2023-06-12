@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Base class for all lives in game, they have a property called "health", they can die. 
+/// For instance, Players, Enemies, ShipModules
+/// </summary>
 public class Entity : MonoBehaviour{
     public string team;
     public string entityName;
     public int mainHealth;[HideInInspector] public int health;
     public int mainArmor; [HideInInspector] public int armor;
-    [HideInInspector] public float immuneRate; //range from 0 to 1
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
     new protected Rigidbody2D rigidbody;
@@ -26,15 +29,14 @@ public class Entity : MonoBehaviour{
 
     // Update is called once per frame
     protected virtual void Update(){
-        if (immuneRate == 1){
-            spriteRenderer.material.color = Color.yellow;
-        }
-        else{
-            spriteRenderer.material.color = Color.white;
-        }
+        
     }
+    /// <summary>
+    /// Entity's health is deducted by amount. Armor can help Entity takes less damage than theoretical damage
+    /// </summary>
+    /// <returns> True if Entity'health is equal to zero after receive damage </returns>
     public virtual bool GetDamage(int amount){
-        health -= (int)(amount*(600.0f/(600.0f+armor))*(1 - immuneRate));
+        health -= (int)(amount*(600.0f/(600.0f+armor)));
         if (health <= 0){
             health = 0;
             return true;
@@ -48,12 +50,8 @@ public class Entity : MonoBehaviour{
     public virtual void SwitchAnim(string name = "Idle"){
         animator.Play(name);
     }
-    protected virtual void Destroy(){
-        Destroy(this.gameObject);
-    }
     protected virtual void Reset(){
         health = mainHealth;
-        armor = 0;
     }
 
 }
