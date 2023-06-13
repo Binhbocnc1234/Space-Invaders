@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public WeaponSO weaponSO;   
+    public WeaponSO weaponSO;
+    [HideInInspector] public Timer bulletDelayTimer;
+    
     void Start(){
 
     }

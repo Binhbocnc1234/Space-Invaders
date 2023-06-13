@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCtrl : Temp
+public class ItemCtrl : MonoBehaviour, ITemp
 {
      [SerializeField] protected Despawn despawn;
     public Despawn Despawn => despawn;
@@ -12,9 +12,7 @@ public class ItemCtrl : Temp
 
 
 
-    protected override void LoadComponents()
-    {
-        base.LoadComponents();
+    protected virtual void LoadComponents(){
         this.LoadDespawn();
         this.LoadItemInventory();
     }

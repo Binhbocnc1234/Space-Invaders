@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class ItemLooter : Temp
+public class ItemLooter : MonoBehaviour, ITemp
 {
 //    [SerializeField] protected Inventory inventory;
    protected CircleCollider2D _collider;

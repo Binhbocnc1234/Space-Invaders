@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dreamteck.Splines;
 
-public class EnemyMove : ObjectMove
+public class EnemyMove : CurvyMove, ITemp
 {
   protected EnemyDD dd;
   
 
   protected override void ResetValue(){
-    base.ResetValue();
     this.dd = GetComponentInChildren<EnemyDD>();
     this.MoveSpeed = 3f;
     this.TypeMove = dd.enemy.typeMove;

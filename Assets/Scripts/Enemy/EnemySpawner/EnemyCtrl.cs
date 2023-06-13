@@ -7,7 +7,7 @@ using UnityEngine;
 // mũi tên chỉ xuống
 
 // Use only to load component và load linked
-public class EnemyCtrl : Temp
+public class EnemyCtrl : MonoBehaviour, ITemp
 {
     [SerializeField] protected EnemySpawner enemySpawner;
     public EnemySpawner EnemySpawner { get => enemySpawner; }
@@ -18,8 +18,7 @@ public class EnemyCtrl : Temp
  
 
 
-    protected override void LoadComponents(){
-     base.LoadComponents();
+    protected virtual void LoadComponents(){
      this.LoadEnemySpawner();
      this.LoadSpawnPoint();
      

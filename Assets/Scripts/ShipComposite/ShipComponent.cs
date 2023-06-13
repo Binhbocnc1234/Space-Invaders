@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class ShipComponent : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public ShipComponentSO shipComponentSO;
+    public string componentName;
+    public ComponentType componentType;
+    public int energyConsumption;
     void Start()
     {
         

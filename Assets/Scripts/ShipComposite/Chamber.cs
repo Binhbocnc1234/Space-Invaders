@@ -5,16 +5,10 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     public BlockSO chamberSO;
+    [HideInInspector] public Entity entity;
     protected void Start(){
         GetComponent<SpriteRenderer>().sprite = chamberSO.texture;
-
-    }
-    protected void Update(){
-        
-    }
-    protected void Destroy()
-    {
-        
+        entity = GetComponent<Entity>();
     }
 
 }

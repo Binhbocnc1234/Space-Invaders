@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hypergun : Temp
+public class Hypergun : Weapon, ITemp
 {
     // Start is called before the first frame update
     [SerializeField] protected BulletSpawner bulletSpawner;
@@ -10,45 +10,34 @@ public class Hypergun : Temp
 
     [SerializeField] protected BulletMove bulletMove;
     public BulletMove BulletMove { get => bulletMove; }
-
-
-    
-
-
-    [SerializeField] protected int level = 1;
-    protected float damage = 120;//base damage;
     Timer firerate = new Timer(0.1f);
     protected int bulletNum = 1;
-    
+    public void Move(){
+
+    }
 
 
-    protected virtual void LoadBulletSpawner(){
-    if(this.bulletSpawner != null){return;}
-    this.bulletSpawner = Transform.FindObjectOfType<BulletSpawner>();
+    protected void LoadBulletSpawner(){
+        if(this.bulletSpawner != null){return;}
+        this.bulletSpawner = Transform.FindObjectOfType<BulletSpawner>();
     }
 
     protected virtual void LoadBulletMove(){
-     if(this.bulletMove != null){return;}
-     this.bulletMove = Transform.FindObjectOfType<BulletMove>();
+        if(this.bulletMove != null){return;}
+        this.bulletMove = Transform.FindObjectOfType<BulletMove>();
     }
 
 
-   protected override void LoadComponents(){
-     base.LoadComponents();
-     this.LoadBulletSpawner();
-     this.LoadBulletMove();
-     
-   }
+    protected virtual void LoadComponents(){
+        this.LoadBulletSpawner();
+        this.LoadBulletMove();
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
         Shooting();
-    }
-    void switchLevel(int level){
-        this.level = level;
-        bulletNum = level / 4 + 1;
-        damage = (120 + 20*(level - 1))/ bulletNum;
     }
     void Shooting(){
         if (InputManager.Instance.OnShoot == 1 && ShipMov.Instance.isResetting == true && firerate.Count(false)){

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dreamteck.Splines;
 
-public abstract class ObjectMove : Temp
+public abstract class CurvyMove : MonoBehaviour, ITemp
 {
   
      [SerializeField] protected float MoveSpeed = 4;
@@ -29,5 +29,5 @@ public abstract class ObjectMove : Temp
 
     protected abstract void Move();
 
-    
+    protected abstract void ResetValue();
 }

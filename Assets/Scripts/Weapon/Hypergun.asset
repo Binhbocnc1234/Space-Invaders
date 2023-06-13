@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20b9485848624541bbcd856d6717577, type: 3}
   m_Name: Hypergun
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: Hypergun
   description: 
-  damage: 0
+  damage: 120
   fireRate: 0
-  bulletSpeed: 0
+  bulletSpeed: 7
   armorPenetration: 0
-  explosion:
-    explosionDamage: 0
-    explosionRadius: 0
+  strikeThrough: 0
+  explosionDamage: 0
+  explosionRadius: 0
+  bulletNum: 0

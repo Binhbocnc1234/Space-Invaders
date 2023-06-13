@@ -9,8 +9,9 @@ using UnityEngine;
 public class Entity : MonoBehaviour{
     public string team;
     public string entityName;
-    public int mainHealth;[HideInInspector] public int health;
-    public int mainArmor; [HideInInspector] public int armor;
+    public int mainHealth;[HideInInspector] public int health{get; private set;}
+    [HideInInspector] public int armor;
+    //References to other components
     protected Animator animator;
     protected SpriteRenderer spriteRenderer;
     new protected Rigidbody2D rigidbody;

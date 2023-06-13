@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Class trung gian
-public class ItemAbstract : Temp
+public class ItemAbstract : MonoBehaviour, ITemp
 {
     [SerializeField] protected ItemCtrl itemCtrl;
 	public ItemCtrl ItemCtrl => itemCtrl;
 
-	protected override void LoadComponents()
+	protected virtual void LoadComponents()
 	{
 		this.LoadItemCtrl();
 	}
