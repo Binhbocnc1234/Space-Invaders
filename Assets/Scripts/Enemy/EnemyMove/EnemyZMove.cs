@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyZMove : ObjectMove
+public class EnemyZMove : CurvyMove, ITemp
 {
 
    [SerializeField] protected Vector3 pos;
@@ -10,7 +10,6 @@ public class EnemyZMove : ObjectMove
 
 
    protected override void ResetValue(){
-    base.ResetValue();
     this.MoveSpeed = 1f;
     this.frequency = 2f;
     this.magnitude = 5f;

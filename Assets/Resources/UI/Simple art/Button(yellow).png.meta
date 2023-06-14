@@ -120,10 +120,10 @@ TextureImporter:
       name: Button(yellow)_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 129
-        width: 90
-        height: 43
+        x: 14
+        y: 128
+        width: 92
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa07cd5119a5e69459f2d976b16298c6
-      internalID: -517537080
+      spriteID: f3f469c879ec9d540b49829e064e9692
+      internalID: -1245355916
       vertices: []
       indices: 
       edges: []
@@ -141,10 +141,10 @@ TextureImporter:
       name: Button(yellow)_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 69
-        width: 89
-        height: 42
+        x: 14
+        y: 68
+        width: 92
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 828be97967d0070428f379341658db78
-      internalID: 761061365
+      spriteID: fc2daf8844c0cf542a398b8a7119a539
+      internalID: 1246724594
       vertices: []
       indices: 
       edges: []
@@ -162,10 +162,10 @@ TextureImporter:
       name: Button(yellow)_2
       rect:
         serializedVersion: 2
-        x: 15
-        y: 9
+        x: 14
+        y: 11
         width: 92
-        height: 42
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cafe73a2c96d8b240918cbb7d8601532
-      internalID: 1338933757
+      spriteID: 49cda3585e25b064793557ad89e8b821
+      internalID: 1756452650
       vertices: []
       indices: 
       edges: []
@@ -190,9 +190,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Button(yellow)_2: 1338933757
-      Button(yellow)_1: 761061365
-      Button(yellow)_0: -517537080
+      Button(yellow)_2: 1756452650
+      Button(yellow)_1: 1246724594
+      Button(yellow)_0: -1245355916
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
