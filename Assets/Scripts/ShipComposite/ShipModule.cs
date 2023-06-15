@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class ShipModule : MonoBehaviour
 {
-    public Block chamber;
+    public Block block;
     public ShipComponent shipComponent;
     [HideInInspector] public ShipComposite shipComposite;
     [HideInInspector] public int i, j;
     protected void Start(){
     }
     protected void Update(){
-        if (chamber.entity.health == 0){
+        if (block.entity.health == 0){
             Destroy();
         }
     }
     protected void Destroy(){
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
+        block.gameObject.SetActive(false);
+        shipComponent.gameObject.SetActive(false);
         shipComposite.DestroyDisjointed();
     }
+    public void SetBlock(){
+        
+    }
+
 }

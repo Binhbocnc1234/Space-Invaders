@@ -9,7 +9,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour{
     public string team;
     public string entityName;
-    public int mainHealth;[HideInInspector] public int health{get; private set;}
+    public int mainHealth;[HideInInspector] public int health;
     [HideInInspector] public int armor;
     //References to other components
     protected Animator animator;

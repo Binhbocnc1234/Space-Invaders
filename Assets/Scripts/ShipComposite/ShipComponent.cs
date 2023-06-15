@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShipComponent : MonoBehaviour
 {
     public ShipComponentSO shipComponentSO;
-    public string componentName;
     public ComponentType componentType;
+    public string componentName;
     public int energyConsumption;
     void Start()
     {
@@ -17,5 +17,9 @@ public class ShipComponent : MonoBehaviour
     void Update()
     {
         
+    }
+    public virtual void Reset(){
+        this.gameObject.SetActive(true);
+        energyConsumption = shipComponentSO.energyConsumption;
     }
 }
