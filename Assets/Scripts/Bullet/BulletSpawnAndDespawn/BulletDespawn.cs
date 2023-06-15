@@ -8,7 +8,7 @@ public class BulletDespawn : Despawn
     public override void DespawnObject()
     {
         // this.transform.position = Playership.Instance.transform.position; // cay vc :)))
-        BulletSpawner.Instance.Despawn(transform.parent);    
+        BulletSpawner.Instance.Despawn(transform);    
     }
     
 

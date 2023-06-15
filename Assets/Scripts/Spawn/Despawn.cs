@@ -28,7 +28,6 @@ public class Despawn : MonoBehaviour
     }
     
     protected virtual bool CanDespawn(){
-        
         this.distance = Vector3.Distance(transform.position, this.mainCam.position);
         if(this.distance > this.disLimit){
             return true;
