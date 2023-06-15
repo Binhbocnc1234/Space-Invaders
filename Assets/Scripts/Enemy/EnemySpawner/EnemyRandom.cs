@@ -48,7 +48,7 @@ public class EnemyRandom : Spawner
     //  Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Wave.Instance.enemyWave[k].Item1[rand].GetComponent<Transform>(), pos, Quaternion.Euler(0,0,0));
     //  obj.gameObject.SetActive(true);
 
-
+    
     var lis = wave.GetList();
     int rand = Random.Range(0, lis[this.wave.wave].Item1.Count);
     Transform obj = Spawn(lis[this.wave.wave].Item1[rand].GetComponent<Transform>(), Vector3.zero, Quaternion.identity);
@@ -58,5 +58,6 @@ public class EnemyRandom : Spawner
   protected void GetSpawnPoint(int num){
     
   }
+  
      
 }

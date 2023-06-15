@@ -45,6 +45,7 @@ public class Wave : MonoBehaviour
         }
 
       }
+      
       // foreach(GameObject x in enemyWave[0].Item1){
       //     Debug.Log(x.name);
       // }
@@ -68,6 +69,7 @@ public class Wave : MonoBehaviour
        }
        
     }
+
 
     protected void LoadEnemyWave(){
       

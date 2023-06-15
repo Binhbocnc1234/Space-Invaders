@@ -55,12 +55,9 @@ public class Hypergun : Weapon, ITemp
                     if (i % 2 == 1){offset.x *= -1;}
                 }
                 spawnPos = Playership.Instance.transform.position + offset;
-                
                 rotation = Playership.Instance.transform.rotation;
-                List<Transform> LBulletType = BulletSpawner.BulletType;
-
                 Transform newBullet = BulletSpawner.Spawn(BulletSpawner.hyperGun, spawnPos, rotation);
-                newBullet.GetChild(0).gameObject.SetActive(true);
+                newBullet.gameObject.SetActive(true);
                 
             }
         }

@@ -54,7 +54,6 @@ public class Spawner : MonoBehaviour
      Transform newPrefab = this.GetObjectFromPool(prefab);
      
      newPrefab.SetPositionAndRotation(spawnPos, rotation);
-
      newPrefab.parent = this.holder;
      this.spawnedCount++;
      return newPrefab;
@@ -74,6 +73,7 @@ public class Spawner : MonoBehaviour
         for(int i = 0; i < poolObjs.Count; i++)
         {
             if (poolObjs[i].name == prefab.name){
+                Debug.Log("OK");
                 Transform a = poolObjs[i]; 
                 this.poolObjs.Remove(poolObjs[i]);
                 return a;
@@ -90,7 +90,10 @@ public class Spawner : MonoBehaviour
     {
         foreach(Transform prefab in this.prefabs)
         {
-            if (prefab.name == prefabName){return prefab;}
+
+            if (prefab.name == prefabName){
+              return prefab;
+            }
         }
 
         return null;
@@ -99,7 +102,7 @@ public class Spawner : MonoBehaviour
     public virtual void Despawn(Transform obj)
     {
         this.poolObjs.Add(obj);
-        obj.GetChild(0).gameObject.SetActive(false); 
+        obj.gameObject.SetActive(false); 
 
         this.spawnedCount--;
     }
