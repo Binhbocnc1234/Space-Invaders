@@ -16,6 +16,7 @@ public class GameContr : MonoBehaviour
     protected static GameContr _instance;
     [HideInInspector] public static GameContr instance{get => _instance;}
     [HideInInspector] public float camHeight;
+    public bool isTestingMode = false;
     public GameState gameState;
     
     

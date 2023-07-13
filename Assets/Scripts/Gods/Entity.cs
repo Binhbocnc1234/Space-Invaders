@@ -10,7 +10,7 @@ using System;
 public class Entity : MonoBehaviour{
     public string team;
     public string entityName;
-    public float maxHealth;[HideInInspector] public float health{get; private set;}
+    public float mainHealth;[HideInInspector] public float health = -1;
     [HideInInspector] public int armor;
     //References to other components
     protected Animator animator;
@@ -48,15 +48,18 @@ public class Entity : MonoBehaviour{
 
     public virtual void GetHealth(float amount){
         health += amount;
-        health = Mathf.Min(health, maxHealth);
+        health = Mathf.Min(health, mainHealth);
     }
 
 
     public virtual void SwitchAnim(string name = "Idle"){
         animator.Play(name);
     }
+    public virtual void SetHealth(int amount){
+        health = mainHealth = amount;
+    }
     protected virtual void Reset(){
-        health = maxHealth;
+        health = mainHealth;
     }
 
 

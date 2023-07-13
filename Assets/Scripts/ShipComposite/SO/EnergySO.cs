@@ -9,4 +9,8 @@ public class EnergySO : ShipComponentSO
     [Header("Energy Component fields")]
     public int energyProduction;
     public int initalEnergy;
+    public override void OnEnable(){
+        base.OnEnable();
+        stats.TryAdd(ItemStat.EnergyProduction, () => energyProduction);
+    }
 }

@@ -44,9 +44,15 @@ TagManager:
   - name: Ship
     uniqueID: 938477297
     locked: 0
+  - name: ShipComponent
+    uniqueID: 1078559111
+    locked: 0
   - name: Bullet
     uniqueID: 820782289
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3363905169
     locked: 0

@@ -8,9 +8,9 @@ public class EnergyComponent : ShipComponent
     public int energyProduction;
     public int initalEnergy;
 
-    public override void Reset()
+    public override void SetComponent(ShipComponentSO so)
     {
-        base.Reset();
+        base.SetComponent(so);
         energySO = (EnergySO)shipComponentSO;
         energyProduction = energySO.energyProduction;
         initalEnergy = energySO.initalEnergy;

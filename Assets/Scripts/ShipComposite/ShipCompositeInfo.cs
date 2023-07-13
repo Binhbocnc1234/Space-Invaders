@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Singleton class. Store data about MotherShip in a battle
+/// </summary>
 public class ShipCompositeInfo : MonoBehaviour
 {
     protected static ShipCompositeInfo instance;
     public static ShipCompositeInfo Instance;
-    public Dictionary<BlockCode, BlockSO> blockDict = new Dictionary<BlockCode, BlockSO>();
-    public Dictionary<ComponentCode, ShipComponentSO> componentDict = new Dictionary<ComponentCode, ShipComponentSO>();
+    public Dictionary<ItemCode, BlockSO> blockDict = new Dictionary<ItemCode, BlockSO>();
+    public Dictionary<ItemCode, ShipComponentSO> componentDict = new Dictionary<ItemCode, ShipComponentSO>();
     public List<ShipCompositeData> dataList = new List<ShipCompositeData>();
     public ShipCompositeData usedComposite{get; private set;}
     protected int _usedComposite;
@@ -25,11 +29,11 @@ public class ShipCompositeInfo : MonoBehaviour
         dataList = RetrieveData();
         BlockSO[] blockSOList = Resources.LoadAll<BlockSO>("ShipComposite\\Block");
         for (int i = 0; i < blockSOList.Length; ++i){
-            blockDict.Add(blockSOList[i].blockCode, blockSOList[i]);
+            blockDict.Add(blockSOList[i].itemCode, blockSOList[i]);
         }
         ShipComponentSO[] componentSOs = Resources.LoadAll<ShipComponentSO>("ShipComposite\\Block");
         for (int i = 0; i < componentSOs.Length; ++i){
-            componentDict.Add(componentSOs[i].componentCode, componentSOs[i]);
+            componentDict.Add(componentSOs[i].itemCode, componentSOs[i]);
         }
     }
     public void SaveData(){
@@ -45,12 +49,12 @@ public class ShipCompositeInfo : MonoBehaviour
         return PlayerPrefsExtra.GetList<ShipCompositeData>(DATA_KEY , new List<ShipCompositeData>());
     }
     /// <returns>True if the execution is successful, it means the Block must link with BaseBlock</returns>
-    public void SetBlock(BlockCode block, int usedCompositeInd, int i, int j){
+    public void SetBlock(ItemCode block, int usedCompositeInd, int i, int j){
         
     }
 }
 public class ShipCompositeData{
     public string name;
-    public (BlockCode block, ComponentCode com)[,] grid = new (BlockCode, ComponentCode)[ShipComposite.Instance.hei, ShipComposite.Instance.wid];
+    public (ItemCode block, ItemCode com)[,] grid = new (ItemCode, ItemCode)[ShipComposite.Instance.hei, ShipComposite.Instance.wid];
     
 }
