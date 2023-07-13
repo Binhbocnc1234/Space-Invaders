@@ -16,9 +16,6 @@ public class DamageReceive : MonoBehaviour
     
 
     protected virtual void Start(){
-        if(this.GetComponent<EnemyDD>()){
-           maxHealth = this.GetComponent<EnemyDD>().enemy.health;
-        }
         this.Reset();
     }
 
@@ -42,8 +39,8 @@ public class DamageReceive : MonoBehaviour
         if(!this.Isdead()){
             return;
         }
-        if(this.GetComponent<EnemyDD>()){
-           this.GetComponent<EnemyDD>().GetItem();
+        if(this.GetComponent<Enemy>()){
+           this.GetComponent<Enemy>().GetItem();
         }
         this.Despawn.DespawnObject();
     }

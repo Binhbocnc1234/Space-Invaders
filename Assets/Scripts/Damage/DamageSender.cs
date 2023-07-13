@@ -14,7 +14,6 @@ public class DamageSender : MonoBehaviour
         if(damageReceive == null){return;}
         this.Send(damageReceive);
 
-      
     }
 
     public virtual void Send(DamageReceive damageReceive){

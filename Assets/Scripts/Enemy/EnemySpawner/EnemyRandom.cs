@@ -5,56 +5,56 @@ using UnityEngine;
 public class EnemyRandom : Spawner
 {
   //  [SerializeField] protected EnemyCtrl enemyCtrl;
-   [SerializeField] protected Wave wave;
+  //  [SerializeField] protected Wave wave;
 
 
-     
-  // protected override void LoadComponents(){
-  //    base.LoadComponents();
-  //    this.LoadEnemyCtrl();
-  //  }
-
-  //  protected virtual void LoadEnemyCtrl(){
-  //   if(this.enemyCtrl != null){return;}
-
-  //   this.enemyCtrl = GetComponent<EnemyCtrl>();
-
-  //   this.wave = FindObjectOfType<Wave>();
-  //  }
-
-   protected virtual void Start(){
+  protected virtual void Start(){
     // this.EnemySpawning();
     StartCoroutine(EnemyTimer());
-   }
+  }
 
-   IEnumerator EnemyTimer(){
+  IEnumerator EnemyTimer(){
     while(true){
       yield return new WaitForSeconds(3.0f);
-      EnemySpawning();
+      for(int i = 0; i < 3; i++){
+         yield return new WaitForSeconds(0.2f);
+         EnemySpawning();
+      }
     }
-   }
-
-   protected virtual void EnemySpawning(){
-    //  Vector3 pos = this.enemyCtrl.SpawnPoint.GetRandom();
-
-    //  List<Transform> Enemy = this.enemyCtrl.EnemySpawner.type;
-    //  int rand = Random.Range(0, Enemy.Count);
-    //  Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Enemy[rand] , pos, Quaternion.Euler(0,0,0));
-    
-    //  int k = Wave.Instance.wave;
-    //  Debug.Log(Wave.Instance.enemyWave[0].Item1[0].name);
-    //  int rand = Random.Range(0, Wave.Instance.enemyWave[k].Item1.Count);
-    //  Debug.Log(rand);
-    //  Transform obj = this.enemyCtrl.EnemySpawner.Spawn(Wave.Instance.enemyWave[k].Item1[rand].GetComponent<Transform>(), pos, Quaternion.Euler(0,0,0));
-    //  obj.gameObject.SetActive(true);
-
-    
-    var lis = wave.GetList();
-    int rand = Random.Range(0, lis[this.wave.wave].Item1.Count);
-    Transform obj = Spawn(lis[this.wave.wave].Item1[rand].GetComponent<Transform>(), Vector3.zero, Quaternion.identity);
-    obj.gameObject.SetActive(true);
-
   }
+   
+   
+  protected virtual void EnemySpawning(){
+    if(Wave.Instance.wave == Wave.Instance.endWave){
+      StopCoroutine(EnemyTimer());
+      EnemyBossSpawning();
+      Wave.Instance.wave += 1;
+      return;
+    }
+
+    else if(Wave.Instance.wave > Wave.Instance.endWave){
+      return;
+    }
+    var lis = Wave.Instance.GetList();
+    int rand = Random.Range(0, lis[Wave.Instance.wave].Item1.Count);
+    
+    Transform obj = Spawn(lis[Wave.Instance.wave].Item1[rand].GetComponent<Transform>(), Vector3.zero, Quaternion.identity);
+    obj.gameObject.SetActive(true);
+    
+    lis[Wave.Instance.wave] = Wave.Instance.Decrease(lis[Wave.Instance.wave]);
+    
+  }
+
+  protected virtual void EnemyBossSpawning(){
+     Transform obj = Spawn(Wave.Instance.boss, new Vector3(0f, -16f, 0f), Quaternion.identity);
+     obj.gameObject.SetActive(true);
+     
+  }
+
+  protected virtual void Spawning(List<Wave.EnemyWave> lis, int rand){
+   
+  }
+  
   protected void GetSpawnPoint(int num){
     
   }

@@ -73,7 +73,6 @@ public class Spawner : MonoBehaviour
         for(int i = 0; i < poolObjs.Count; i++)
         {
             if (poolObjs[i].name == prefab.name){
-                Debug.Log("OK");
                 Transform a = poolObjs[i]; 
                 this.poolObjs.Remove(poolObjs[i]);
                 return a;

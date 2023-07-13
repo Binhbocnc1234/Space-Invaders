@@ -11,13 +11,4 @@ public class BulletDespawn : Despawn
         BulletSpawner.Instance.Despawn(transform);    
     }
     
-
-    // Don't use for guns can go through enemy's space ship
-    protected virtual void OnTriggerEnter2D(Collider2D collider){
-      
-      DamageReceive damageReceive = collider.GetComponent<DamageReceive>();
-      if(damageReceive == null){return;}
-      
-      DespawnObject();
-   }
 }

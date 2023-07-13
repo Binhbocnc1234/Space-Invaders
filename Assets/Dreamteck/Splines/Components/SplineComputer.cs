@@ -2,6 +2,7 @@ namespace Dreamteck.Splines
 {
     using UnityEngine;
     using System.Collections.Generic;
+    using System;
 
     public delegate void EmptySplineHandler();
     //MonoBehaviour wrapper for the spline class. It transforms the spline using the object's transform and provides thread-safe methods for sampling
@@ -2117,6 +2118,11 @@ namespace Dreamteck.Splines
         public void EditorSetAllPointsDirty()
         {
             SetAllDirty();
+        }
+
+        public void Reverse()
+        {
+            throw new NotImplementedException();
         }
 
 #endif
