@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-
-
-public enum ComponentType{
-    Engine,
-    Firearm,
-    Energy,
-}
-public class ShipComponentSO : ScriptableObject
+public class ShipComponentSO : Marketable
 {   
     [Header("ShipComponent fields")]
-    public string componentName;
+    public ComponentCode componentCode;
     public ComponentType componentType;
-    public int cost;
+    public string componentName;
     public Sprite sprite;
     public string description;
     public int energyConsumption;
+}
+public enum ComponentType{
+    None,
+    Energy,
+    Engine,
+    Firearm,
+    Other,
+}
+public enum ComponentCode{
+    None,
+    BlackList,
+    Reactor,
+    SmallFan,
+    WoodenToilet,
 }

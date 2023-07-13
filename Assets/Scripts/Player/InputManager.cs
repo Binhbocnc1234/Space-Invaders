@@ -5,9 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
    // singleton
-   protected static InputManager instance;
-
-   public static InputManager Instance {get => instance;}
+  protected static InputManager instance;
+  public static InputManager Instance {get => instance;}
    // GetMousePos
    [HideInInspector] protected Vector3 MousePos;
    [HideInInspector] public Vector3 MousePosition{get => MousePos;}
@@ -17,8 +16,13 @@ public class InputManager : MonoBehaviour
 
    public float startTime = 0f, endTime = 0f;
    private void Awake(){
-     InputManager.instance = this;
-   }
+      if (InputManager.instance != null){
+        MyDebug.LogSingleton();
+      }
+      else{
+        InputManager.instance = this;
+      }
+  }
 
 
    void Update(){

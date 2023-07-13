@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
     {
         if (poolObjs[i] == null){
           this.poolObjs.Remove(poolObjs[i]);
-          Debug.LogWarning("You have created a null objects!");
+          MyDebug.LogWarning("You have created a null objects!");
         }
     }
   }

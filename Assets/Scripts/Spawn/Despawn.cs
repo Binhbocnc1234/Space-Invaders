@@ -22,7 +22,7 @@ public class Despawn : MonoBehaviour
     public virtual void DespawnObject()
     {
         if(gameObject == null){
-            Debug.Log("NOO");
+            MyDebug.Log("NOO");
         }
         Destroy(gameObject);
     }

@@ -175,5 +175,8 @@ public static class PlayerPrefsExtra
 	{
 		PlayerPrefs.SetString(key, JsonUtility.ToJson (value));
 	}
+	static void Delete<T>(string key){
+		PlayerPrefs.DeleteKey(key);
+	}
 
 }
