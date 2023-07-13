@@ -11,7 +11,7 @@ public class Block : MonoBehaviour
         Reset();
     }
     public void Reset(){
-        entity.mainHealth = entity.health = blockSO.mainHealth;
+        entity.maxHealth = entity.health = blockSO.mainHealth;
         entity.armor = blockSO.armor;
         GetComponent<SpriteRenderer>().sprite = blockSO.texture;
     }
