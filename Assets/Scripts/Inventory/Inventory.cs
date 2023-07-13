@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton class. A container for items Player earns from battles. Inventory is saved after closing game
+/// </summary>
 public class Inventory : MonoBehaviour
 {
   public List<ItemInventory> items;
@@ -16,45 +19,31 @@ public class Inventory : MonoBehaviour
       Destroy(gameObject);
       Debug.LogWarning("You have created two instance of Inventory");
     }
-    //Retrieve player data
-    items = PlayerPrefsExtra.GetList<ItemInventory>("items", new List<ItemInventory>());
+    //You can choose not to load data when testing
+    // LoadData();
     DontDestroyOnLoad(gameObject);
   }
-  private void Update(){
+  private void SaveData(){
     PlayerPrefsExtra.SetList("items", items);
   }
-  public virtual bool AddItem(ItemCode itemCode, int addCount){
+  public void LoadData(){
+    items = PlayerPrefsExtra.GetList<ItemInventory>("items", new List<ItemInventory>());
+    
+  }
+  /// <summary>
+  /// Add item by amount. You can remove some items from Inventory if you set amount smaller than zero
+  /// </summary>
+  /// <returns> False if the number of available items is smaller than the amount you want to remove. Otherwise, return True</returns>
+  public virtual bool AddItem(ItemCode itemCode, int amount){
     ItemInventory itemInventory = this.GetItemByCode(itemCode);
     if (itemInventory == null){
-      itemInventory = AddNewItem(itemCode);
+      items.Add(new ItemInventory(itemCode));
     }
-    if (itemInventory.itemCount + addCount < 0){
-      Debug.LogWarning("Insuffient items");
-      return false;
-    }
-    else{
-      itemInventory.itemCount += addCount;
-      return true;
-    }
+    return itemInventory.AddItem(amount);
   }
 
   public virtual ItemInventory GetItemByCode(ItemCode itemCode){
     ItemInventory itemInventory = this.items.Find((item) => item.itemProfile.itemCode == itemCode);
     return itemInventory;
   }
-  protected virtual ItemInventory AddNewItem(ItemCode itemCode){
-    var profiles = Resources.LoadAll("Items/ItemProfiles", typeof(ItemProfileSO));
-    foreach(ItemProfileSO profile in profiles){
-        if(profile.itemCode != itemCode) continue;
-        ItemInventory itemInventory = new ItemInventory{
-            itemProfile = profile
-        };
-        this.items.Add(itemInventory);
-        return itemInventory;
-    }
-    Debug.LogError($"You haven't created ItemProfileSO with itemCode \"{itemCode}\"");
-    return null;
-  }
-
-
 }

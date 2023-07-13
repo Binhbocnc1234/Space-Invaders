@@ -4,20 +4,18 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "BlockSO", menuName = "SO/Block")]
-public class BlockSO : ScriptableObject
+public class BlockSO : ItemProfileSO
 {
-    public BlockCode blockCode;
-    public string blockName;
+    [Header("Block stats")]
     public int mainHealth;
     public int armor;
-    public Sprite texture;
-
-}
-
-public enum BlockCode{
-    None,
-    Wood,
-    Stone,
-    BlueNanotech,
-
+    public int weight;
+    public int antiElemental;
+    public override void OnEnable(){
+        base.OnEnable();
+        stats.TryAdd(ItemStat.Health, () => mainHealth);
+        stats.TryAdd(ItemStat.Armor, () => armor);
+        stats.TryAdd(ItemStat.AntiElemental, () => antiElemental);
+        stats.TryAdd(ItemStat.Weight, () => weight);
+    }
 }

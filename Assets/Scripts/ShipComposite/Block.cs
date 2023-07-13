@@ -2,18 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Entity))]
 public class Block : MonoBehaviour
 {
     public BlockSO blockSO;
-    [HideInInspector] public Entity entity;
-    protected void Start(){
+    public Entity entity;
+    public SpriteRenderer spriteRenderer;
+    void Awake(){
         entity = GetComponent<Entity>();
-        Reset();
     }
-    public void Reset(){
+    public virtual void SetBlock(BlockSO so){
+
+        blockSO = so;
+        MyDebug.Log(entity);
+        entity.SetHealth(so.mainHealth);
         entity.mainHealth = entity.health = blockSO.mainHealth;
         entity.armor = blockSO.armor;
-        GetComponent<SpriteRenderer>().sprite = blockSO.texture;
+        spriteRenderer.sprite = blockSO.sprite;
+        this.gameObject.SetActive(true);
     }
+    // public virtual bool IsActive(){
+
+    // }
 
 }

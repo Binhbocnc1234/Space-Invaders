@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class ShipComponentSO : Marketable
+public class ShipComponentSO : ItemProfileSO
 {   
     [Header("ShipComponent fields")]
-    public ComponentCode componentCode;
-    public ComponentType componentType;
-    public string componentName;
-    public Sprite sprite;
-    public string description;
+    public ComponentType componentType = ComponentType.Energy;
+    int w, h;
     public int energyConsumption;
+    public override void OnEnable(){
+        base.OnEnable();
+        stats.TryAdd(ItemStat.EnergyConsumption, () => energyConsumption);
+    }
+
 }
 public enum ComponentType{
     None,
@@ -19,11 +21,4 @@ public enum ComponentType{
     Engine,
     Firearm,
     Other,
-}
-public enum ComponentCode{
-    None,
-    BlackList,
-    Reactor,
-    SmallFan,
-    WoodenToilet,
 }

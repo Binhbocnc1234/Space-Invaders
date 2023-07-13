@@ -9,7 +9,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour{
     public string team;
     public string entityName;
-    public int mainHealth;[HideInInspector] public int health;
+    public int mainHealth;[HideInInspector] public int health = -1;
     [HideInInspector] public int armor;
     //References to other components
     protected Animator animator;
@@ -50,6 +50,9 @@ public class Entity : MonoBehaviour{
     }
     public virtual void SwitchAnim(string name = "Idle"){
         animator.Play(name);
+    }
+    public virtual void SetHealth(int amount){
+        health = mainHealth = amount;
     }
     protected virtual void Reset(){
         health = mainHealth;
