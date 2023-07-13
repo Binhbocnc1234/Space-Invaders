@@ -4,10 +4,18 @@ using UnityEngine;
 
 
 
-public class EnemyDD : MonoBehaviour {
+public class Enemy : MonoBehaviour {
 
     // Link EnemySO
     public EnemySO enemy;
+    
+
+    private Entity entity;
+    private EnemyDespawn enemyDespawn;
+    void Start(){
+        entity = GetComponent<Entity>();
+        enemyDespawn = GetComponent<EnemyDespawn>();
+    }
     
     // Destroy GetItem
     ItemProfileSO GetDroppedItem(){
@@ -37,10 +45,10 @@ public class EnemyDD : MonoBehaviour {
             Quaternion dropRot = Quaternion.identity;
             Instantiate(dp, dropPos, dropRot);
             
-
-        }
-       
+        }  
     }
+
+
 
 
 

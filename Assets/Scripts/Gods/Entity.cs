@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Base class for all lives in game, they have a property called "health", they can die. 
@@ -16,16 +17,20 @@ public class Entity : MonoBehaviour{
     protected SpriteRenderer spriteRenderer;
     new protected Rigidbody2D rigidbody;
     new protected Collider2D collider2D;
+
+
+    // Action
+    public Action OnDead;
     protected virtual void Awake(){
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider2D = GetComponent<Collider2D>();
-        health = mainHealth;
     }
+
     protected virtual void Start()
     {
-
+        this.Reset();
     }
 
     // Update is called once per frame
@@ -36,18 +41,17 @@ public class Entity : MonoBehaviour{
     /// Entity's health is deducted by amount. Armor can help Entity takes less damage than theoretical damage
     /// </summary>
     /// <returns> True if Entity'health is equal to zero after receive damage </returns>
-    public virtual bool GetDamage(int amount){
+    public virtual bool GetDamage(float amount){
         health -= (int)(amount*(600.0f/(600.0f+armor)));
-        if (health <= 0){
-            health = 0;
-            return true;
-        }
-        return false;
+        return this.health <= 0;
     }
-    public virtual void GetHealth(int amount){
+
+    public virtual void GetHealth(float amount){
         health += amount;
-        health = Mathf.Min(health, mainHealth);
+        health = Mathf.Min(health, maxHealth);
     }
+
+
     public virtual void SwitchAnim(string name = "Idle"){
         animator.Play(name);
     }
@@ -55,7 +59,8 @@ public class Entity : MonoBehaviour{
         health = mainHealth = amount;
     }
     protected virtual void Reset(){
-        health = mainHealth;
+        health = maxHealth;
     }
+
 
 }

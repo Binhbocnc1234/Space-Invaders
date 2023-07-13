@@ -13,10 +13,11 @@ public abstract class CurvyMove : MonoBehaviour, ITemp
 
 
     // for zigzac only
-     
-     [SerializeField] protected float frequency = 5f; // Speed of sine movement
-     [SerializeField] protected float magnitude = 5f; //  Size of sine movement
-
+    
+    [HideInInspector]
+     protected float frequency = 5f; // Speed of sine movement
+    [HideInInspector]
+     protected float magnitude = 5f; //  Size of sine movement
 
 
     // Update is called once per frame

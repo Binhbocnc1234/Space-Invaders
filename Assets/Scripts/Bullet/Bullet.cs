@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Bullet : MonoBehaviour
 {
-    public string team;
-    public int damage;
+    public float damage;
     public int armorPenetration;
     private Entity entity;
     private BulletDespawn bulletDespawn;
@@ -16,7 +16,9 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         Entity otherEntity = other.GetComponent<Entity>();
         if (otherEntity != null && otherEntity.team != entity.team){
-            otherEntity.GetDamage(damage);
+            if(otherEntity.GetDamage(damage)){
+                otherEntity.OnDead?.Invoke();
+            }
             bulletDespawn.DespawnObject();
         }
     }

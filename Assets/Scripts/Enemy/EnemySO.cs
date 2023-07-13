@@ -7,7 +7,6 @@ using Dreamteck.Splines;
 [CreateAssetMenu(fileName = "EnemySO", menuName = "SO/Enemy")]
 public class EnemySO : ScriptableObject
 {
-    [SerializeField] public float health;
     [SerializeField] public float speed;
     [SerializeField] public SplineComputer typeMove;
 
@@ -24,5 +23,4 @@ public enum EnemyType
    None = 0,
    Outscreen = 1,
    Static = 2,
-   
 }
