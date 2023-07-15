@@ -18,7 +18,6 @@ public class CardInBattle : MonoBehaviour{
     public void SetItem(ItemProfileSO profile){
         if (profile == null){MyDebug.LogError("Item is null");}
         item = profile;
-        MyDebug.Log(this.item);
         frame.sprite = CardContainer.Instance.rarityFrame[(int)item.rarity];
         image.sprite = item.sprite;
     }

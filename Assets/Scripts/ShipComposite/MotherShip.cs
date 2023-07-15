@@ -33,6 +33,7 @@ public class MotherShip : MonoBehaviour
     protected static MotherShip instance;
     public static MotherShip Instance{get => instance;}
     public BlockSO stone; public ShipComponentSO tower;
+    public Transform moduleHolder;
     protected int _hei;
     public int hei{
         get{return _hei;}
@@ -64,7 +65,7 @@ public class MotherShip : MonoBehaviour
     }
     public void CreateEmpty(int hei, int wid, BlockSO block = null, ShipComponentSO com = null){
         //ClearPreviousData
-        foreach(Transform child in transform){
+        foreach(Transform child in moduleHolder){
             Destroy(child.gameObject);
         }
         //Set Width and height
@@ -78,7 +79,7 @@ public class MotherShip : MonoBehaviour
                 Vector3 position = this.transform.position;
                 position.x += j + 0.5f;
                 position.y += i + 0.5f;
-                ShipModule module = Instantiate(emptyModule, position, transform.rotation, transform);
+                ShipModule module = Instantiate(emptyModule, position, transform.rotation, moduleHolder);
                 modules[i, j] = module;
                 module.gameObject.SetActive(true);
                 module.SetPosition(i, j); 
@@ -199,7 +200,7 @@ public class ShipCompositeEditor : Editor{
         base.OnInspectorGUI();
         MotherShip motherShip = (MotherShip)target;
         if (GUILayout.Button("Generate Module")){
-            motherShip.CreateEmpty(6,6, motherShip.stone, motherShip.tower);
+            motherShip.CreateEmpty(6,6, motherShip.stone);
         }
     }
 }
