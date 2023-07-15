@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+[RequireComponent(typeof(Entity)), RequireComponent(typeof(BulletDespawn))]
 public class Bullet : MonoBehaviour
 {
     public float damage;
     public int armorPenetration;
-    private Entity entity;
-    private BulletDespawn bulletDespawn;
+    public Entity entity;
+    public BulletDespawn bulletDespawn;
     void Start(){
         entity = GetComponent<Entity>();
         bulletDespawn = GetComponent<BulletDespawn>();
@@ -22,4 +24,11 @@ public class Bullet : MonoBehaviour
             bulletDespawn.DespawnObject();
         }
     }
+    void OutOfScreen(){
+
+    }
+    public void Despawn(){
+        
+    }
+
 }

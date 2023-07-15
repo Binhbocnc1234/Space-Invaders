@@ -7,8 +7,13 @@ using System;
 /// Base class for all lives in game, they have a property called "health", they can die. 
 /// For instance, Players, Enemies, ShipModules
 /// </summary>
+
+public enum Team{
+    Player,
+    Enemy,
+}
 public class Entity : MonoBehaviour{
-    public string team;
+    public Team team;
     public string entityName;
     public float mainHealth;[HideInInspector] public float health = -1;
     [HideInInspector] public int armor;
@@ -60,6 +65,9 @@ public class Entity : MonoBehaviour{
     }
     protected virtual void Reset(){
         health = mainHealth;
+    }
+    protected virtual bool IsDead(){
+        return health == 0;
     }
 
 

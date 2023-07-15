@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 
 /// <summary>
@@ -22,13 +25,14 @@ public static class ShipMessageString{
         {ShipMessage.OutOfArray, "You have reached the limit of building grid"},
         {ShipMessage.InBase, "You cannot place anything in Base"},
         {ShipMessage.NotConnectToBase, "You should place Blocks that connect to Base"},
-        {ShipMessage.NoBlockBelow, "Place a Block below first"}
+        {ShipMessage.NoBlockBelow, "If you want to place a Component, place a Block below first"}
     };
 }
-public class ShipComposite : MonoBehaviour
+public class MotherShip : MonoBehaviour
 {
-    protected static ShipComposite instance;
-    public static ShipComposite Instance{get => instance;}
+    protected static MotherShip instance;
+    public static MotherShip Instance{get => instance;}
+    public BlockSO stone; public ShipComponentSO tower;
     protected int _hei;
     public int hei{
         get{return _hei;}
@@ -58,10 +62,16 @@ public class ShipComposite : MonoBehaviour
         visited = new bool[hei,wid];
         // LoadFromData();
     }
-    public void CreateEmpty(int hei, int wid){
+    public void CreateEmpty(int hei, int wid, BlockSO block = null, ShipComponentSO com = null){
+        //ClearPreviousData
+        foreach(Transform child in transform){
+            Destroy(child.gameObject);
+        }
+        //Set Width and height
         this.hei = hei;
         this.wid = wid;
         base_i = hei/2; base_j = wid/2;
+        //Setup for Module
         bool haveBase = false;
         for (int i = 0; i < hei; ++i){
             for (int j = 0; j < wid; ++j){
@@ -76,8 +86,14 @@ public class ShipComposite : MonoBehaviour
                     haveBase = true;
                     shipBase.position = position;
                 }
-                if ((i == base_i + 1 || j == base_j + 1) && i - base_i <= 1 && j - base_j <= 1){
+                if ((i == base_i + 1 || j == base_j + 1) && Mathf.Abs(i - base_i) <= 1 && Mathf.Abs(j - base_j) <= 1){
                     module.haveBaseIn = true;
+                }
+                else{
+                    if (block != null){
+                        module.SetBlock(block);
+                    }
+                    if(com != null){module.SetComponent(com);}
                 }
             }
         }
@@ -136,7 +152,7 @@ public class ShipComposite : MonoBehaviour
     /// <returns>True if the execution is successful, it means the Block must link with BaseBlock</returns>
     public bool SetBlock(BlockSO so, int i, int j, bool forceSet = false){
         if (!forceSet && !TrySetBlock(so, i, j)){return false;}
-        modules[i, j].block.SetBlock(so);
+        modules[i, j].SetBlock(so);
         MyDebug.Log($"Successfully placing Block at position ({i},{j})");
         return true;
     }
@@ -144,7 +160,7 @@ public class ShipComposite : MonoBehaviour
     /// If ComponentType is Energy, it must be placed behind the ShipComposite </returns>
     public bool SetComponent(ShipComponentSO so, int i, int j, bool forceSet = false){
         if (!forceSet && !TrySetComponent(so, i, j)){return false;}
-        modules[i, j].shipComponent.SetComponent(so);
+        modules[i, j].SetComponent(so);
         MyDebug.Log($"Successfully placing Component at position ({i},{j})");
         return true;
     }
@@ -174,3 +190,17 @@ public class ShipComposite : MonoBehaviour
         area = wid*hei;
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(MotherShip))]
+public class ShipCompositeEditor : Editor{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+        MotherShip motherShip = (MotherShip)target;
+        if (GUILayout.Button("Generate Module")){
+            motherShip.CreateEmpty(6,6, motherShip.stone, motherShip.tower);
+        }
+    }
+}
+#endif

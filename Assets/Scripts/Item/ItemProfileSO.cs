@@ -22,8 +22,7 @@ public class ItemProfileSO : ScriptableObject{
   public virtual void OnEnable(){}
   public static ItemProfileSO FindByItemCode(ItemCode itemCode){
       var profiles = Resources.LoadAll("ItemProfiles", typeof(ItemProfileSO));
-      foreach (ItemProfileSO profile in profiles)
-      {
+      foreach (ItemProfileSO profile in profiles){
           if (profile.itemCode != itemCode) continue;
           return profile;
       }

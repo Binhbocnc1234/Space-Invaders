@@ -68,7 +68,7 @@ public class SupportShip : MonoBehaviour {
             Vector2 dir = Quaternion.Euler(0, 0, angle) * RayOb2.transform.up;
             RaycastHit2D hit = Physics2D.Raycast(RayOb2.transform.position, dir, radius);
 
-            if (hit.collider != null && hit.collider.GetComponent<Entity>().team == "Enemy")
+            if (hit.collider != null && hit.collider.GetComponent<Entity>().team == Team.Enemy)
             {
                check = true;
                followSpeed = 0.02f;
@@ -78,7 +78,7 @@ public class SupportShip : MonoBehaviour {
                transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position,followSpeed); 
             }
 
-            if(hit.collider != null && hit.collider.GetComponent<Entity>().team == "Ship" && check == false){
+            if(hit.collider != null && hit.collider.GetComponent<Entity>().team == Team.Player && check == false){
                followSpeed = 0.09f;
                transform.position = Vector2.MoveTowards(transform.position, hit.collider.transform.position,followSpeed); 
             } 

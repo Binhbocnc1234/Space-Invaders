@@ -12,9 +12,7 @@ public class Block : MonoBehaviour
         entity = GetComponent<Entity>();
     }
     public virtual void SetBlock(BlockSO so){
-
         blockSO = so;
-        MyDebug.Log(entity);
         entity.SetHealth(so.mainHealth);
         entity.mainHealth = entity.health = blockSO.mainHealth;
         entity.armor = blockSO.armor;

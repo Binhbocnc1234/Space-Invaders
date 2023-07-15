@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMove : MonoBehaviour, IMove
+public class BulletMove : MonoBehaviour
 {
     public float moveSpeed;
-    void Start(){
-
-    }
-    void Update(){
-        Move();
-    }
-    public void Move(){
+    protected virtual void Update(){
         transform.Translate(Vector3.up*moveSpeed*Time.deltaTime); 
     }
+
     
 }

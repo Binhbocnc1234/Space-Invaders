@@ -132,7 +132,7 @@ public class Test : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other){
         
-        if(other.GetComponent<Entity>().team == "Enemy"){
+        if(other.GetComponent<Entity>().team == Team.Enemy){
             han = false;
             Vector2 dir = (other.transform.position - transform.position ).normalized;
             transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
