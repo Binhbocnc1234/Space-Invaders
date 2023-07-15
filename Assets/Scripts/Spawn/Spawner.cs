@@ -5,7 +5,6 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
    [Header("Spawner")]
-
    [SerializeField] protected string List = "Type";
    private Transform listObj; //Bullet type
   //Objects inside GameObject "BulletType" : Hypergun , Deathnote
@@ -14,7 +13,7 @@ public class Spawner : MonoBehaviour
    [SerializeField] protected Transform holder;
    [SerializeField] protected int spawnedCount = 0;
    public int SpawnedCount => spawnedCount; //number of active objects
-   [SerializeField] protected List<Transform> poolObjs; 
+   [SerializeField] protected List<Transform> poolObjs;
    [SerializeField] protected List<Transform> prefabs;
   void Start(){
     listObj = transform.Find(List);

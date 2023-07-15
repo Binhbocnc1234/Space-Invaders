@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 
 ///<summary>
@@ -14,7 +16,7 @@ public class ShipCompositeUI : MonoBehaviour
     protected static ShipCompositeUI instance;
     public static ShipCompositeUI Instance{get => instance;}
     public Sprite[] rarityFrame;
-    private ShipComposite motherShip;
+    private MotherShip motherShip;
     public Transform pointer;
     public Transform placingBan;
     public Transform module;
@@ -25,7 +27,7 @@ public class ShipCompositeUI : MonoBehaviour
         else{MyDebug.LogSingleton();}
     }
     void Start(){
-        motherShip = ShipComposite.Instance;
+        motherShip = MotherShip.Instance;
     }
     void Update(){
         
@@ -59,6 +61,7 @@ public class ShipCompositeUI : MonoBehaviour
     }
     /// <summary>Place the tower/block in the cell where the mouse pointer is in</summary>
     public void SetModule(){
+        Debug.Log(itemProfile.itemType);
         holding = false;
         pointer.gameObject.SetActive(false);
         module.gameObject.SetActive(false);
@@ -88,4 +91,3 @@ public class ShipCompositeUI : MonoBehaviour
         return new Vector2Int((int)diff.y, (int)diff.x);
     }
 }
-

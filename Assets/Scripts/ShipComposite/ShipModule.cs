@@ -7,15 +7,16 @@ public class ShipModule : MonoBehaviour
 {
     [Header("References")]
     public Block block;
-    public ShipComponent shipComponent;
+    protected ShipComponent shipComponent;
     public GameObject cellUI;
     public SortingGroup sortingGroup;
+    public Transform towerContainer;
     [HideInInspector] public bool haveBaseIn = false;
-    [HideInInspector] public ShipComposite shipComposite;
+    public MotherShip shipComposite;
     [HideInInspector] public int i{get; private set;}
     [HideInInspector] public int j{get; private set;}
     protected void Awake(){
-        shipComposite = ShipComposite.Instance;
+        shipComposite = MotherShip.Instance;
     }
     protected void Start(){
         
@@ -36,6 +37,20 @@ public class ShipModule : MonoBehaviour
         this.j = j;
         sortingGroup.sortingOrder = shipComposite.hei - i;
         gameObject.name = $"Module ({i}, {j})";
+    }
+    public void SetComponent(ShipComponentSO so){
+        foreach(Transform child in towerContainer){
+            ShipComponent com = child.GetComponent<ShipComponent>();
+            if (com.shipComponentSO.itemCode == so.itemCode){
+                ShipComponent newCom = Instantiate(com, this.transform.position, this.transform.rotation, transform);
+                newCom.gameObject.SetActive(true);
+                shipComponent = newCom;
+
+            }
+        }
+    }
+    public void SetBlock(BlockSO so){
+        block.SetBlock(so);
     }
 
 }

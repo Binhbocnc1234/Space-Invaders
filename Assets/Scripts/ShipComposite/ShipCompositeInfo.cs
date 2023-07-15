@@ -55,6 +55,6 @@ public class ShipCompositeInfo : MonoBehaviour
 }
 public class ShipCompositeData{
     public string name;
-    public (ItemCode block, ItemCode com)[,] grid = new (ItemCode, ItemCode)[ShipComposite.Instance.hei, ShipComposite.Instance.wid];
+    public (ItemCode block, ItemCode com)[,] grid = new (ItemCode, ItemCode)[MotherShip.Instance.hei, MotherShip.Instance.wid];
     
 }
