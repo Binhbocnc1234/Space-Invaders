@@ -1,10 +1,11 @@
 using System;
+using UnityEngine;
 
-public static class ObjectExtension 
+public static class SystemExtension 
 {
-    public static bool IsNullableEnum(this Type t)
-    {
-        Type u = Nullable.GetUnderlyingType(t);
-        return (u != null) && u.IsEnum;
+    public static Vector3 GetMousePos(){
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        return mousePos;
     }
 }

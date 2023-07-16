@@ -11,15 +11,16 @@ using UnityEditor;
 /// <para> A Singleton class used as guide for placing towers/blocks. </para>
 /// <para> Methods: SelectModule, SetModule, TrySetModule</para>
 ///</summary>
-public class ShipCompositeUI : MonoBehaviour
+public class MotherShipUI : MonoBehaviour
 {
-    protected static ShipCompositeUI instance;
-    public static ShipCompositeUI Instance{get => instance;}
+    protected static MotherShipUI instance;
+    public static MotherShipUI Instance{get => instance;}
     public Sprite[] rarityFrame;
     private MotherShip motherShip;
     public Transform pointer;
     public Transform placingBan;
     public Transform module;
+    public Transform popup;
     bool holding = false;
     ItemProfileSO itemProfile;
     void Awake(){
@@ -61,33 +62,34 @@ public class ShipCompositeUI : MonoBehaviour
     }
     /// <summary>Place the tower/block in the cell where the mouse pointer is in</summary>
     public void SetModule(){
-        Debug.Log(itemProfile.itemType);
         holding = false;
         pointer.gameObject.SetActive(false);
         module.gameObject.SetActive(false);
         placingBan.gameObject.SetActive(false);
         Vector2Int pos = WorldPointToShipPos();
+        ShipMessage mes = ShipMessage.NotSuccess;
         if (itemProfile.itemType == ItemType.Block){
-            motherShip.SetBlock((BlockSO)itemProfile, pos.x, pos.y, true); 
+            mes = motherShip.SetBlock((BlockSO)itemProfile, pos.x, pos.y); 
         }
         else if (itemProfile.itemType == ItemType.Component){
-            motherShip.SetComponent((ShipComponentSO)itemProfile, pos.x, pos.y, true);
+            mes = motherShip.SetComponent((ShipComponentSO)itemProfile, pos.x, pos.y);
         }
+        Debug.Log(SystemExtension.GetMousePos());
+        popup.GetComponent<PopUp>().SetMessage(ShipMessageString.messageDict[mes], SystemExtension.GetMousePos() + new Vector3(0, 1, 0));
     }
     /// <summary> Return True if Player can put his tower/block in the location where the pointer is in. Otherwise, return False</summary>
-    public bool TrySetModule(){
+    public ShipMessage TrySetModule(){
         Vector2Int pos = WorldPointToShipPos();
         if (itemProfile.itemType == ItemType.Block){
             return motherShip.TrySetBlock((BlockSO)itemProfile, pos.x, pos.y); 
         }
-        else if (itemProfile.itemType == ItemType.Component){
+        else{
             return motherShip.TrySetComponent((ShipComponentSO)itemProfile, pos.x, pos.y);
         }
-        return false;
     }
     Vector2Int WorldPointToShipPos(){
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 diff = mousePos - motherShip.transform.position;
+        Vector2 diff = SystemExtension.GetMousePos() - motherShip.transform.position;
         return new Vector2Int((int)diff.y, (int)diff.x);
     }
+
 }
