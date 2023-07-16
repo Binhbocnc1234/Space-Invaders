@@ -30,7 +30,14 @@ public enum ItemCode{
     Material_BlueInk,
     Material_PurpleInk,
 }
-public class ItemCodeParser{
+public static class ItemCodeParser{
+    public static Dictionary<ItemCode, ItemProfileSO> itemProfileDict = new Dictionary<ItemCode, ItemProfileSO>();
+    static ItemCodeParser(){
+        ItemProfileSO[] itemList = Resources.LoadAll<ItemProfileSO>("Item\\ItemProfile");
+        for (int i = 0; i < itemList.Length; ++i){
+            itemProfileDict.Add(itemList[i].itemCode, itemList[i]);
+        }
+    }
     public static ItemCode FromString(string itemName)
     {
         try
@@ -44,3 +51,5 @@ public class ItemCodeParser{
         }
     }
 }
+
+

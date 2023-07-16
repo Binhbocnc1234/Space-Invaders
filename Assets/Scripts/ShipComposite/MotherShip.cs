@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -13,6 +14,7 @@ using UnityEditor;
 
 public enum ShipMessage{
     Success,
+    NotSuccess,
     OutOfArray,
     InBase,
     NotConnectToBase,
@@ -20,12 +22,13 @@ public enum ShipMessage{
     NoBlockBelow
 }
 public static class ShipMessageString{
-    public static Dictionary<ShipMessage, string> message = new Dictionary<ShipMessage, string>(){
+    public static Dictionary<ShipMessage, string> messageDict = new Dictionary<ShipMessage, string>(){
         {ShipMessage.Success, "Placing success"},
         {ShipMessage.OutOfArray, "You have reached the limit of building grid"},
         {ShipMessage.InBase, "You cannot place anything in Base"},
         {ShipMessage.NotConnectToBase, "You should place Blocks that connect to Base"},
-        {ShipMessage.NoBlockBelow, "If you want to place a Component, place a Block below first"}
+        {ShipMessage.NoBlockBelow, "If you want to place a Component, place a Block below first"},
+
     };
 }
 public class MotherShip : MonoBehaviour
@@ -45,7 +48,7 @@ public class MotherShip : MonoBehaviour
         set{_wid = value; ReCalculateArea();}
     }
     public int area;
-    public Transform shipBase;
+    public ShipBase shipBase;
     [HideInInspector] public int base_i, base_j;
     public ShipModule[,] modules = new ShipModule[10, 10];
     public ShipModule emptyModule;
@@ -71,8 +74,9 @@ public class MotherShip : MonoBehaviour
         //Set Width and height
         this.hei = hei;
         this.wid = wid;
-        base_i = hei/2; base_j = wid/2;
-        //Setup for Module
+        //ShipBase
+        shipBase.SetPosition(hei/2-1, wid/2-1);
+        //Setup for Modules
         bool haveBase = false;
         for (int i = 0; i < hei; ++i){
             for (int j = 0; j < wid; ++j){
@@ -83,11 +87,11 @@ public class MotherShip : MonoBehaviour
                 modules[i, j] = module;
                 module.gameObject.SetActive(true);
                 module.SetPosition(i, j); 
-                if (i + 1 == ((int)hei)/2 && j + 1 == ((int)wid)/2 && haveBase == false){
+                if (i == base_i && j == base_j && haveBase == false){
                     haveBase = true;
-                    shipBase.position = position;
                 }
-                if ((i == base_i + 1 || j == base_j + 1) && Mathf.Abs(i - base_i) <= 1 && Mathf.Abs(j - base_j) <= 1){
+                if ((i == base_i + 1 && j == base_j) || (i == base_i+1 && j == base_j+1) || 
+                (i == base_i && j == base_j + 1) || (i == base_i && j == base_j)){
                     module.haveBaseIn = true;
                 }
                 else{
@@ -151,45 +155,49 @@ public class MotherShip : MonoBehaviour
         
     }
     /// <returns>True if the execution is successful, it means the Block must link with BaseBlock</returns>
-    public bool SetBlock(BlockSO so, int i, int j, bool forceSet = false){
-        if (!forceSet && !TrySetBlock(so, i, j)){return false;}
-        modules[i, j].SetBlock(so);
-        MyDebug.Log($"Successfully placing Block at position ({i},{j})");
-        return true;
+    public ShipMessage SetBlock(BlockSO so, int i, int j, bool forceSet = false){
+        ShipMessage mes = TrySetBlock(so, i, j);
+        if (forceSet || mes == ShipMessage.Success){modules[i, j].SetBlock(so);}
+        // MyDebug.Log($"Successfully placing Component at position ({i},{j})");
+        return mes;
     }
     /// <returns>True if the execution is successful, it means a Block has been placed in given place before. 
     /// If ComponentType is Energy, it must be placed behind the ShipComposite </returns>
-    public bool SetComponent(ShipComponentSO so, int i, int j, bool forceSet = false){
-        if (!forceSet && !TrySetComponent(so, i, j)){return false;}
-        modules[i, j].SetComponent(so);
-        MyDebug.Log($"Successfully placing Component at position ({i},{j})");
-        return true;
+    public ShipMessage SetComponent(ShipComponentSO so, int i, int j, bool forceSet = false){
+        ShipMessage mes = TrySetComponent(so, i, j);
+        if (forceSet || mes == ShipMessage.Success){modules[i, j].SetComponent(so);}
+        // MyDebug.Log($"Successfully placing Component at position ({i},{j})");
+        return mes;
     }
     public bool RemoveComponent(int i, int j){
         if (IsOutOfArray(i, j)){return false;}
         return true;
     }
-    public bool TrySetComponent(ShipComponentSO component, int i, int j){
-        if (IsOutOfArray(i, j)){return false;}
-        if (modules[i, j].block.gameObject.activeSelf == false){Debug.LogWarning("You must place Component on a Block!"); return false;}
-        if (component.componentType == ComponentType.Engine && i == hei - 1 && modules[i, j].enabled == true){return false;}
-        return true;
+    public ShipMessage TrySetComponent(ShipComponentSO component, int i, int j){
+        if (IsOutOfArray(i, j)){return ShipMessage.OutOfArray;}
+        if (modules[i, j].block.gameObject.activeSelf == false){return ShipMessage.NoBlockBelow;}
+        return ShipMessage.Success;
     }
     /// <returns>True if the execution is successful, it means the Block must link with BaseBlock</returns>
-    public bool TrySetBlock(BlockSO block, int i, int j){
-        if (IsOutOfArray(i, j)){return false;}
-        if (modules[i,j].haveBaseIn){return false;}
-        SearchBase(i, j);
-        if (visited[base_i, base_j] == false){return false;}
-        Array.Clear(visited, 0, visited.Length);
-        return true;
+    public ShipMessage TrySetBlock(BlockSO block, int i, int j){
+        if (IsOutOfArray(i, j)){return ShipMessage.OutOfArray;}
+        if (modules[i,j].haveBaseIn){return ShipMessage.InBase;}
+        if (!IsBlockActive(i,j-1) && !IsBlockActive(i, j+1) && !IsBlockActive(i-1,j) && !IsBlockActive(i+1,j)){
+            return ShipMessage.NotConnectToBase;
+        }
+        return ShipMessage.Success;
     }
     bool IsOutOfArray(int i, int j){
         return i >= hei || j >= wid || i < 0 || j < 0;
     }
+    bool IsBlockActive(int i, int j){
+        return !IsOutOfArray(i, j) && 
+        (modules[i, j].block.gameObject.activeSelf || 
+        modules[i, j].haveBaseIn);}
     void ReCalculateArea(){
         area = wid*hei;
     }
+    
 }
 
 #if UNITY_EDITOR

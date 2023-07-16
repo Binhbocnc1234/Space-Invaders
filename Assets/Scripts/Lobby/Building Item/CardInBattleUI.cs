@@ -13,7 +13,7 @@ public class CardInBattle : MonoBehaviour{
     public Image image;
     public void SelectCard(){
         MyDebug.Log($"You clicked {item.itemName} card");
-        ShipCompositeUI.Instance.SelectModule(item);
+        MotherShipUI.Instance.SelectModule(item);
     }
     public void SetItem(ItemProfileSO profile){
         if (profile == null){MyDebug.LogError("Item is null");}

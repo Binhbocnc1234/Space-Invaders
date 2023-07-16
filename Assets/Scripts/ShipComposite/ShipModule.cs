@@ -11,12 +11,12 @@ public class ShipModule : MonoBehaviour
     public GameObject cellUI;
     public SortingGroup sortingGroup;
     public Transform towerContainer;
+    protected MotherShip motherShip;
     [HideInInspector] public bool haveBaseIn = false;
-    public MotherShip shipComposite;
     [HideInInspector] public int i{get; private set;}
     [HideInInspector] public int j{get; private set;}
     protected void Awake(){
-        shipComposite = MotherShip.Instance;
+        motherShip = MotherShip.Instance;
     }
     protected void Start(){
         
@@ -30,13 +30,14 @@ public class ShipModule : MonoBehaviour
         gameObject.SetActive(false);
         block.gameObject.SetActive(false);
         shipComponent.gameObject.SetActive(false);
-        shipComposite.DestroyDisjointed();
+        motherShip.DestroyDisjointed();
     }
     public void SetPosition(int i, int j){
         this.i = i;
         this.j = j;
-        sortingGroup.sortingOrder = shipComposite.hei - i;
+        sortingGroup.sortingOrder = motherShip.hei - i;
         gameObject.name = $"Module ({i}, {j})";
+        GetComponent<HarmonicOscillation>().original = this.transform.position;
     }
     public void SetComponent(ShipComponentSO so){
         foreach(Transform child in towerContainer){
