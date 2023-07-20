@@ -20,7 +20,7 @@ public class MotherShipUI : MonoBehaviour
     public Transform pointer;
     public Transform placingBan;
     public Transform module;
-    public Transform popup;
+    public PopUp popup;
     bool holding = false;
     ItemProfileSO itemProfile;
     void Awake(){

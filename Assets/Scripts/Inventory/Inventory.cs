@@ -2,14 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 /// <summary>
 /// Singleton class. A container for items Player earns from battles. Inventory is saved after closing game
 /// </summary>
 public class Inventory : MonoBehaviour
 {
-  public List<ItemInventory> items;
   protected static Inventory instance;
   public static Inventory Instance {get => instance;}
+  enum SortOption{
+    Name, Level, DPS, Star, 
+  }
+  public List<ItemInventory> items;
+  public List<List<ItemInventory>> categoryList;
 
   private void Awake(){
     if(Inventory.instance == null){
@@ -46,4 +53,14 @@ public class Inventory : MonoBehaviour
     ItemInventory itemInventory = this.items.Find((item) => item.itemProfile.itemCode == itemCode);
     return itemInventory;
   }
+  public virtual List<ItemInventory> GetItemByType(ItemType type){
+    List<ItemInventory> newItemLst = new List<ItemInventory>();
+    foreach(ItemInventory item in items){
+      if (item.itemProfile.itemType == type){
+        newItemLst.Add(item);
+      }
+    }
+    return newItemLst;
+  }
+
 }
