@@ -6,7 +6,17 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-	
+
+
+
+/// <summary>
+/// <para> This utility will help you refactor your Unity animations, which you can't do in the default Animation editor </para>
+/// <para> Usage: </para>
+/// <para> +Place the AnimationHierarchyEditor.cs file in YourProject/Editors/ folder. </para>
+/// <para> +Open Animation Hierarchy Editor window by clicking on Window > Animation Hierarchy Editor. </para>
+/// <para> +The editor will work if you select an Animation Clip. </para>
+/// <para> Methods : Replace Root() , UpdatePath() </para>
+/// </summary>
 public class AnimationHierarchyEditor : EditorWindow {
 	private static int columnWidth = 300;
 	
@@ -222,7 +232,7 @@ public class AnimationHierarchyEditor : EditorWindow {
 	string sReplacementOldRoot;
 	string sReplacementNewRoot;
 
-
+	/// <summary> add Root at the beginning of all paths, for example, Leg/Foot to Body/Leg/Foot. Especially used when you want to add a parent </summary>
 	void ReplaceRoot(string oldRoot, string newRoot)
 	{
 		float fProgress = 0.0f;
@@ -286,7 +296,7 @@ public class AnimationHierarchyEditor : EditorWindow {
 		FillModel();
 		this.Repaint();
 	}
-	
+	/// <summary> Replace an oldPath with a new one. Especially used when you what to rename a GameObject </summary>
 	void UpdatePath(string oldPath, string newPath) 
 	{
 		if (paths[newPath] != null) {

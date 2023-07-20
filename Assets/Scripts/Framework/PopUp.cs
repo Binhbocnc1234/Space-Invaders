@@ -5,14 +5,15 @@ using TMPro;
 
 public class PopUp : MonoBehaviour
 {
-    TextMeshPro tmp;
+    public TextMeshPro tmp;
+    public Transform positionObject;
     void Start(){
-        tmp = GetComponent<TextMeshPro>();
+        // tmp = GetComponent<TextMeshPro>();
         gameObject.SetActive(false);
     }
     public void SetMessage(string text, Vector3 pos){
         tmp.text = text;
-        transform.position = pos;
+        positionObject.position = pos;
         gameObject.SetActive(true);
     }
     public void EndAnim(){

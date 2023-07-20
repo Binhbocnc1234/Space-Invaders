@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(VerticalLayoutGroup))]
+// [RequireComponent(typeof(VerticalLayoutGroup))]
 public class CategoryUI : MonoBehaviour
 {
     public int choosenOne = 0;

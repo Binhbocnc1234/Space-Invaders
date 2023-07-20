@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 
 
-//An alternative solution for PlayerPrefs, Support saving data in many type(Vector, Quaternion, List,...). 
+/// <summary> An alternative solution for PlayerPrefs, Support saving data in many type(Vector, Quaternion, List,...). </summary> 
 public static class PlayerPrefsExtra
 {
 	#region Bool -----------------------------------------------------------------------------------------

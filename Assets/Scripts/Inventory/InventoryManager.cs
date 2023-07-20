@@ -40,7 +40,4 @@ public class InventoryManager : MonoBehaviour
             inventorySlots.Add(newSlot);
         }   
     }
-    void Sort(){
-
-    }
 }
