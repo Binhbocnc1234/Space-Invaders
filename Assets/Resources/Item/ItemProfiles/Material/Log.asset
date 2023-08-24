@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemCode: 18
   itemType: 1
+  rarity: 0
   itemName: Log
   description: An useful item
-  icon: {fileID: 21300000, guid: ec3569959e9cd9745a86c7b290844b34, type: 3}
+  sprite: {fileID: 21300000, guid: 97951210cd438df408bac032a0c279eb, type: 3}
   dropChance: 10
