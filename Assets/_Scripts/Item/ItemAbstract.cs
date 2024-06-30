@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Class trung gian
+// Class to get interact with ItemCtrl
 public class ItemAbstract : MonoBehaviour, ITemp
 {
     [SerializeField] protected ItemCtrl itemCtrl;

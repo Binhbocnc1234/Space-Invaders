@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 /// <summary>
 /// A script attached to a Card. When being clicked, this script implements SelectModule() of ShipCompositeUI
 /// </summary>

@@ -16,9 +16,8 @@ public class ItemPickupable : ItemAbstract
   }
   
   // Destroy -> add to pool obj
-  public virtual void Picked()
-  {
-        this.itemCtrl.Despawn.DespawnObject();
+  public virtual void Picked(){
+      this.itemCtrl.Despawn.DespawnObject();
   }
 
 
