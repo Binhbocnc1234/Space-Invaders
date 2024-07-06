@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,22 +30,24 @@ public enum ItemCode{
     Material_BlueInk,
     Material_PurpleInk,
 }
-public static class ItemCodeParser{
+public static class ItemCodeParser {
+    // Dictionary store ItemCode and ItemProfileSO
     public static Dictionary<ItemCode, ItemProfileSO> itemProfileDict = new Dictionary<ItemCode, ItemProfileSO>();
-    static ItemCodeParser(){
+
+    static ItemCodeParser() {
+        //Load all ItemProfileSO from folder "Item/ItemProfile"
         ItemProfileSO[] itemList = Resources.LoadAll<ItemProfileSO>("Item\\ItemProfile");
-        for (int i = 0; i < itemList.Length; ++i){
+        for (int i = 0; i < itemList.Length; ++i) {
             itemProfileDict.Add(itemList[i].itemCode, itemList[i]);
         }
     }
-    public static ItemCode FromString(string itemName)
-    {
-        try
-        {
+
+    // String to Itemcode
+    public static ItemCode FromString(string itemName) {
+        try {
             return (ItemCode)System.Enum.Parse(typeof(ItemCode), itemName);
         }
-        catch (ArgumentException e)
-        {
+        catch (ArgumentException e) {
             Debug.LogError(e.ToString());
             return ItemCode.None;
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-//Help slot render item's texture, item's name, number of items you have
+/// <summary> Help slot render item's texture, item's name, number of items you have </summary>
 public class InventoryUI : MonoBehaviour
 { 
     // protected static InventoryUI instance;

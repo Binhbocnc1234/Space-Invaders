@@ -12,12 +12,10 @@ public class EliteAccess : MonoBehaviour
 
     public Transform Center;
 
-
     //
     private Vector3 startPosition;
     private Vector3 targetPosition;
-    public float radius = 4f; 
-    
+
 
     protected float moveTime = 0.5f;
     protected float timer = 0f;
@@ -25,24 +23,20 @@ public class EliteAccess : MonoBehaviour
 
     protected bool isMoving = true;
 
-
-
-    
     
     protected void Moving(){
 
+        if(isMoving){
+            float t = timer/moveTime;
         
-    if(isMoving){
-        float t = timer/moveTime;
-        
-        timer += Time.deltaTime;
-        transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            timer += Time.deltaTime;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
 
-        if(timer >= 0.65f){
-            startPosition = targetPosition;
-            CalculateNewTargetPosition();
-            timer = 0f;
-        }
+            if(timer >= 0.65f){
+                startPosition = targetPosition;
+                CalculateNewTargetPosition();
+                timer = 0f;
+            }
 
 
         }
@@ -50,18 +44,19 @@ public class EliteAccess : MonoBehaviour
 
     protected IEnumerator Attack(){
         while(true){
-            Debug.Log("LO");
             isMoving = false;
 
             foreach(Transform child in motherShip){
                 GameObject c = child.Find("Block").gameObject;
-                if(c.activeSelf){
+                if(Target.Contains(c.transform)){
+                    continue;
+                }
+                else if(c.activeSelf){
                     Target.Add(c.transform);
                 }
             }
 
             if(Target.Count == 0){
-                Debug.Log("OK");
                 isMoving = true;
             }
             else{
@@ -88,11 +83,11 @@ public class EliteAccess : MonoBehaviour
                 Vector3 direction = (closestTransform.position - transform.position).normalized;
 
                 // Thêm lực để đạn bay đi theo hướng đã tính
-                Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-                bulletRigidbody.velocity = direction * 3f;
+                float rot_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                bullet.transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
             
 
-                isMoving = true;
+                Invoke("Change", 0.5f);
             }
 
 
@@ -121,11 +116,15 @@ public class EliteAccess : MonoBehaviour
         float randomAngle = Random.Range(0f, 2f * Mathf.PI);
 
         // Tính toán vị trí đích mới dựa trên góc ngẫu nhiên và khoảng cách di chuyển
-        float x = Center.position.x + radius * Mathf.Cos(randomAngle);
-        float y = Center.position.y + radius * Mathf.Sin(randomAngle);
+        float x = Center.position.x + 4f * Mathf.Cos(randomAngle); // 4f : radius
+        float y = Center.position.y + 4f * Mathf.Sin(randomAngle);
         float z = Center.position.z;
 
         targetPosition = new Vector3(x, y, z);
+    }
+
+    protected void Change(){
+        isMoving = true;
     }
 
 

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b0f2d48c2607b4b9f61becf5fdd697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 'Enemy_extra  '
+  team: 0
   entityName: 
   mainHealth: 50
   health: 0
@@ -115,3 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8743810548d04443917adb1b48909a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: []
+  motherShip: {fileID: 0}
+  bulletPrefab: {fileID: 3209258148840242520, guid: ec8222d7f82feef4c818134f7bd9d255, type: 3}
+  Center: {fileID: 1966174632285394336, guid: 72fa35497fb9b2343a9b4d6ebf8c61cd, type: 3}
+  radius: 4

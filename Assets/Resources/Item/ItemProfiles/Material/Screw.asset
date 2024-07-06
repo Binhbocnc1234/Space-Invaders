@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41c67fc569cb45c479c525bf5defb71f, type: 3}
-  m_Name: Bolt
+  m_Name: Screw
   m_EditorClassIdentifier: 
   itemCode: 2
   itemType: 1
+  rarity: 0
   itemName: Screw
   description: An useful item
-  icon: {fileID: 21300000, guid: ec3569959e9cd9745a86c7b290844b34, type: 3}
+  sprite: {fileID: 21300000, guid: ec3569959e9cd9745a86c7b290844b34, type: 3}
   dropChance: 10

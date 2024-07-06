@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary> Store inventory and interact method for inventory </summary>
 public class InventoryManager : MonoBehaviour
 {
     protected static InventoryManager instance;
@@ -13,16 +14,20 @@ public class InventoryManager : MonoBehaviour
         else{instance = this;}
     }
     void Start(){
-        SwitchInventory(0);
+        // SwitchInventory(0);
     }
-    public void SwitchInventory(int ind){
-        choosenOne = ind;
-        for(int i = 0; i < inventories.Count; ++i){
-            if (i == ind){inventories[i].OnActive.Invoke();}
-            else{inventories[i].OnDeactive.Invoke();}
-        }
-        MyDebug.Log($"Switch to Inventory named : {inventories[ind].name}");
-    }
+
+    // Use in Start() as temporary method
+    // public void SwitchInventory(int ind){
+    //     choosenOne = ind;
+    //     for(int i = 0; i < inventories.Count; ++i){
+    //         if (i == ind){inventories[i].OnActive.Invoke();}
+    //         else{inventories[i].OnDeactive.Invoke();}
+    //     }
+    //     MyDebug.Log($"Switch to Inventory named : {inventories[ind].name}");
+    // }
+
+    // Use for switch inventory type when you click on type button
     public void SwitchInventory(Inventory inventory){
         for(int i = 0; i < inventories.Count; ++i){
             if (inventories[i] == inventory){inventories[i].OnActive?.Invoke(); choosenOne = i;}

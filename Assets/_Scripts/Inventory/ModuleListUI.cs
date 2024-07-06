@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-
 ///<summary>
 /// Filter from Inventory to get MotherShip-related items, then pass them for UI
 ///</summary>
@@ -17,17 +16,6 @@ public class ModuleListUI : MonoBehaviour
     public GridLayoutGroup engineContent;
     public Inventory inventory;
     public InventorySlot inventorySlotPrefab;
-    
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void LoadFromInventory(){
         foreach(ItemInventory itemInventory in inventory.items){
             
