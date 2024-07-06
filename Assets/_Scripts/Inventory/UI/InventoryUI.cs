@@ -18,9 +18,6 @@ public class InventoryUI : MonoBehaviour
         inventory.OnDeactive += DeActive;
         Initialize(); 
     }
-    void Start(){
-        
-    }
     void Update(){
         foreach(InventorySlot slot in inventorySlots){
             if(slot.item.itemCount == 0){

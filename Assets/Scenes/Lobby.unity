@@ -721,11 +721,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7520953616204764228, guid: 42717f27bc124c7429d3ed70c5adbe42, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0002731014
+      value: -0.000042734697
       objectReference: {fileID: 0}
     - target: {fileID: 7568655881859912106, guid: 42717f27bc124c7429d3ed70c5adbe42, type: 3}
       propertyPath: m_Name
       value: ItemProfileUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568655881859912106, guid: 42717f27bc124c7429d3ed70c5adbe42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7616183227875581450, guid: 42717f27bc124c7429d3ed70c5adbe42, type: 3}
       propertyPath: m_AnchorMax.x
@@ -7372,7 +7376,7 @@ PrefabInstance:
     - target: {fileID: 3631797581075604312, guid: 2202506a4d26d664aafbf492ee9667fc, type: 3}
       propertyPath: items.Array.data[2].itemProfile
       value: 
-      objectReference: {fileID: 11400000, guid: c4f207f69ba6b5344ae38a7eeabf5f05, type: 2}
+      objectReference: {fileID: 11400000, guid: e49848d68c1c94643bf20e16af30fd6f, type: 2}
     - target: {fileID: 3631797581075604312, guid: 2202506a4d26d664aafbf492ee9667fc, type: 3}
       propertyPath: items.Array.data[3].itemProfile
       value: 
@@ -14891,6 +14895,10 @@ PrefabInstance:
     - target: {fileID: 5080308429648169961, guid: e99841b41d0c34e4e9150c39b871d516, type: 3}
       propertyPath: m_Name
       value: Content-Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080308429648169961, guid: e99841b41d0c34e4e9150c39b871d516, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5325843019414384620, guid: e99841b41d0c34e4e9150c39b871d516, type: 3}
       propertyPath: m_AnchorMax.y

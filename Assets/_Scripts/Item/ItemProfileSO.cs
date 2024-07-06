@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 #endif
 
-
+//Items need help
 [CreateAssetMenu(fileName = "ItemProfileSO", menuName = "SO/ItemProfile")]
 public class ItemProfileSO : ScriptableObject{
   [SearchWindow]

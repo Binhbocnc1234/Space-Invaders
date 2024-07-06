@@ -23,12 +23,5 @@ public class EnemyDespawn : Despawn
         entity.OnDead += DespawnObject;
    }
 
-   
-
-
-
-
-   
-   
 
 }

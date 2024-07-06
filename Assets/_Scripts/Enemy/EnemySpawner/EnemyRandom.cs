@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Dreamteck.Splines;
 
 public class EnemyRandom : Spawner
 {
-  //  [SerializeField] protected EnemyCtrl enemyCtrl;
-  //  [SerializeField] protected Wave wave;
-
-
+  public GameObject EnemyModel;
   protected virtual void Start(){
-    // this.EnemySpawning();
     StartCoroutine(EnemyTimer());
   }
 
@@ -17,41 +14,55 @@ public class EnemyRandom : Spawner
     while(true){
       yield return new WaitForSeconds(3.0f);
       for(int i = 0; i < 3; i++){
-         yield return new WaitForSeconds(0.2f);
-         EnemySpawning();
+        yield return new WaitForSeconds(0.2f);
+        EnemySpawning();
       }
     }
   }
    
    
   protected virtual void EnemySpawning(){
-    if(Wave.Instance.wave == Wave.Instance.endWave){
-      StopCoroutine(EnemyTimer());
-      EnemyBossSpawning();
-      Wave.Instance.wave += 1;
-      return;
-    }
 
-    else if(Wave.Instance.wave > Wave.Instance.endWave){
-      return;
-    }
-    var lis = Wave.Instance.GetList();
-    int rand = Random.Range(0, lis[Wave.Instance.wave].Item1.Count);
+      if(WaveManager.Instance.wave == WaveManager.Instance.endWave){
+        StopCoroutine(EnemyTimer());
+        EnemyBossSpawning();
+        WaveManager.Instance.wave += 1;
+        return;
+      }
+
+      else if(WaveManager.Instance.wave > WaveManager.Instance.endWave){
+        return;
+      }
+      var lis = WaveManager.Instance.GetList();
+      int rand = Random.Range(0, lis[WaveManager.Instance.wave].spawnList.Count);
+
+      EnemySO randEnemy = lis[WaveManager.Instance.wave].spawnList[rand];
+
+      ChangeModel(EnemyModel, randEnemy);
+
+
+      Transform obj = Spawn(EnemyModel.GetComponent<Transform>(), Vector3.zero, Quaternion.identity);
+      obj.gameObject.SetActive(true);
     
-    Transform obj = Spawn(lis[Wave.Instance.wave].Item1[rand].GetComponent<Transform>(), Vector3.zero, Quaternion.identity);
-    obj.gameObject.SetActive(true);
+      lis[WaveManager.Instance.wave] = WaveManager.Instance.Decrease(lis[WaveManager.Instance.wave]);
     
-    lis[Wave.Instance.wave] = Wave.Instance.Decrease(lis[Wave.Instance.wave]);
-    
+  }
+
+  protected virtual void ChangeModel(GameObject model, EnemySO e){
+    SplineFollower follower = model.GetComponent<SplineFollower>();
+    follower.followSpeed = e.speed;
+    follower.spline = e.typeMove;
+
   }
 
   protected virtual void EnemyBossSpawning(){
-     Transform obj = Spawn(Wave.Instance.boss, new Vector3(0f, -16f, 0f), Quaternion.identity);
-     obj.gameObject.SetActive(true);
+
+    Transform obj = Spawn(WaveManager.Instance.boss, new Vector3(0f, -16f, 0f), Quaternion.identity);
+    obj.gameObject.SetActive(true);
      
   }
 
-  protected virtual void Spawning(List<Wave.EnemyWave> lis, int rand){
+  protected virtual void Spawning(List<WaveManager.EnemyWave> lis, int rand){
    
   }
   
