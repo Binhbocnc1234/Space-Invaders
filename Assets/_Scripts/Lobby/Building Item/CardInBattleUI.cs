@@ -15,6 +15,7 @@ public class CardInBattle : MonoBehaviour{
         MyDebug.Log($"You clicked {item.itemName} card");
         MotherShipUI.Instance.SelectModule(item);
     }
+
     public void SetItem(ItemProfileSO profile){
         if (profile == null){MyDebug.LogError("Item is null");}
         item = profile;

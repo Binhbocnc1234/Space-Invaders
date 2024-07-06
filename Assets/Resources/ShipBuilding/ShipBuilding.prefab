@@ -13047,13 +13047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23aea81e6751bd343ab3bb57f2ff38f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rarityFrame:
-  - {fileID: 21300000, guid: d3453668236744148b28ba0fd9819d1a, type: 3}
-  - {fileID: 21300000, guid: af6614933185c7c43b4dce6fd890c7ad, type: 3}
-  - {fileID: 21300000, guid: 58cf2de87f5a604458c890b0edc011d3, type: 3}
-  - {fileID: 21300000, guid: ef12dbc36deab3a4f8bca7e023e61455, type: 3}
-  - {fileID: 21300000, guid: 0c6953fb459189b44adb60640b6c57a9, type: 3}
-  - {fileID: 21300000, guid: 55b8ba5751ce3614a9a8305523437282, type: 3}
   choosenItemList:
   - {fileID: 11400000, guid: 86530c7a8eee19d419bc8957f2acd365, type: 2}
   - {fileID: 11400000, guid: ab6820a2e307f114993eacdeb4b264f9, type: 2}

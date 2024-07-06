@@ -8,9 +8,6 @@ using UnityEditor;
 #endif
 
 
-/// <summary>
-/// Singleton class. Store data and control MotherShip in a battle. Positions of Modules is relative to Mothership's position
-/// </summary>
 
 public enum ShipMessage{
     Success,
@@ -21,6 +18,9 @@ public enum ShipMessage{
     FullHealth,
     NoBlockBelow
 }
+/// <summary>
+/// Singleton class. Store data and control MotherShip in a battle. Positions of Modules is relative to Mothership's position
+/// </summary>
 public static class ShipMessageString{
     public static Dictionary<ShipMessage, string> messageDict = new Dictionary<ShipMessage, string>(){
         {ShipMessage.Success, "Placing success"},
@@ -125,7 +125,7 @@ public class MotherShip : MonoBehaviour
         
     }
     /// <summary>
-    /// Use depth-first search to check if there's way to go from BaseModule to each ShipModule
+    /// Use depth-first search(DFS) to check if there's way to go from BaseModule to each ShipModule
     /// </summary>
     /// <returns> Void. Result of implementation is stored in array "visited" </returns>
     void SearchBase(int i, int j){
