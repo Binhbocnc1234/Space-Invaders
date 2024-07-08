@@ -135,7 +135,8 @@ MonoBehaviour:
   _optimizeAngleThreshold: 0.5
   _space: 1
   _sampleMode: 0
-  _subscribers: []
+  _subscribers:
+  - {fileID: 0}
   _rawSamples:
   - position: {x: -15.149077, y: -40.355972, z: 0}
     up: {x: 0, y: 0, z: 1}

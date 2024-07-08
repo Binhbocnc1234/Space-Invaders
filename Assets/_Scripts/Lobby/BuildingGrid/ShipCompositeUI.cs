@@ -8,7 +8,7 @@ using UnityEditor;
 
 
 ///<summary>
-/// <para> A Singleton class used as guide for placing towers/blocks. </para>
+/// <para> A Singleton class used as a guide for placing towers/blocks. </para>
 /// <para> Methods: SelectModule, SetModule, TrySetModule</para>
 ///</summary>
 public class MotherShipUI : MonoBehaviour

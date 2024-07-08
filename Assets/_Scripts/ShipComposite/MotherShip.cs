@@ -19,7 +19,7 @@ public enum ShipMessage{
     NoBlockBelow
 }
 /// <summary>
-/// Singleton class. Store data and control MotherShip in a battle. Positions of Modules is relative to Mothership's position
+/// A message appears in screen when you place a Block or Tower. The messages are Success, Out of Array, In Base, NotConnectToBase, NoBlockBelow
 /// </summary>
 public static class ShipMessageString{
     public static Dictionary<ShipMessage, string> messageDict = new Dictionary<ShipMessage, string>(){
@@ -28,9 +28,11 @@ public static class ShipMessageString{
         {ShipMessage.InBase, "You cannot place anything in Base"},
         {ShipMessage.NotConnectToBase, "You should place Blocks that connect to Base"},
         {ShipMessage.NoBlockBelow, "If you want to place a Component, place a Block below first"},
-
     };
 }
+/// <summary>
+/// Singleton class. Store data and control MotherShip in a battle. Positions of Modules is relative to Mothership's position
+/// </summary>
 public class MotherShip : MonoBehaviour
 {
     protected static MotherShip instance;
@@ -66,10 +68,17 @@ public class MotherShip : MonoBehaviour
         visited = new bool[hei,wid];
         // LoadFromData();
     }
+    /// <summary>
+    /// Clear previous Block and Tower and create new array of Modules
+    /// </summary>
+    /// <param name="hei"></param>
+    /// <param name="wid"></param>
+    /// <param name="block"></param>
+    /// <param name="com"></param>
     public void CreateEmpty(int hei, int wid, BlockSO block = null, ShipComponentSO com = null){
         //ClearPreviousData
         foreach(Transform child in moduleHolder){
-            Destroy(child.gameObject);
+            DestroyImmediate(child.gameObject);
         }
         //Set Width and height
         this.hei = hei;
@@ -194,6 +203,9 @@ public class MotherShip : MonoBehaviour
         return !IsOutOfArray(i, j) && 
         (modules[i, j].block.gameObject.activeSelf || 
         modules[i, j].haveBaseIn);}
+    /// <summary>
+    /// Set area = width*height
+    /// </summary>
     void ReCalculateArea(){
         area = wid*hei;
     }

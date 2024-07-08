@@ -9,15 +9,16 @@ public class Bullet : MonoBehaviour
 {
     public float damage;
     public int armorPenetration;
-    public Entity entity;
+    //
+    public Entity ally;
     public BulletDespawn bulletDespawn;
     void Start(){
-        entity = GetComponent<Entity>();
+        ally = GetComponent<Entity>();
         bulletDespawn = GetComponent<BulletDespawn>();
     }
     void OnTriggerEnter2D(Collider2D other){
         Entity otherEntity = other.GetComponent<Entity>();
-        if (otherEntity != null && otherEntity.team != entity.team){
+        if (otherEntity != null && otherEntity.team != ally.team){
             if(otherEntity.GetDamage(damage)){
                 otherEntity.OnDead?.Invoke();
             }

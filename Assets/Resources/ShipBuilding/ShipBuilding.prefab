@@ -8553,7 +8553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   armorPenetration: 0
-  entity: {fileID: 8020280991230277511}
+  ally: {fileID: 0}
   bulletDespawn: {fileID: 9131114970019403310}
 --- !u!1 &4747650840847621488
 GameObject:

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// A message for Player if Player places, removes Block, Tower. This message will disappear for few seconds
+/// </summary>
 public class PopUp : MonoBehaviour
 {
     public TextMeshPro tmp;

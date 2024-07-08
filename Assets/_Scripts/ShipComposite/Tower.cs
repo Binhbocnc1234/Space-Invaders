@@ -36,6 +36,10 @@ public class Tower : ShipComponent
             yield return new WaitForSeconds(0.1f);
         }
     }
+    /// <summary>
+    /// Create a bullet and attach a target to bullet
+    /// </summary>
+    /// <param name="target"></param>
     public virtual void Shoot(Entity target){
         Bullet newBullet = Instantiate(bullet, bullet.transform.position, bullet.transform.rotation, transform);
         newBullet.damage = towerSO.damage;
