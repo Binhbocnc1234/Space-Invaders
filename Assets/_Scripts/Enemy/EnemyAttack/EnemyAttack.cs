@@ -30,7 +30,7 @@ public class EnemyAttack : MonoBehaviour{
                 yield return null;
             }
 
-            StartCoroutine(Attack(Dmg, target));
+            StartCoroutine(Attack(ind, speed, Dmg, target));
 
         }
         else if (ind == 2)
@@ -39,25 +39,33 @@ public class EnemyAttack : MonoBehaviour{
         }
     }
 
-    public IEnumerator Attack(int Dmg, Transform target){
+    public IEnumerator Attack(int ind, float speed, int Dmg, Transform target){
+        bool check = true;
+        while(check){
+            // Wait to change action
+            yield return new WaitForSeconds(0.5f);
 
-        // Wait to change action
-        yield return new WaitForSeconds(0.5f);
+            // Play your idle animation here
 
-        // Play your idle animation here
+            // Wait for next attack action (thời gian chờ 3 giây)
+            yield return new WaitForSeconds(1f);
 
-        // Wait for next attack action (thời gian chờ 3 giây)
-        yield return new WaitForSeconds(1f);
-
-        // Play attack animation here
-        // Example:
-        // anim.Play("Attack");
+            // Play attack animation here
+            // Example:
+            // anim.Play("Attack");
 
         
-        Entity targetEntity = target.GetComponent<Entity>();
-        if (targetEntity != null){
-            targetEntity.GetDamage(Dmg);
+            Entity targetEntity = target.GetComponent<Entity>();
+            if (targetEntity != null){
+                targetEntity.GetDamage(Dmg);
+            }
+
+            if(targetEntity.health <= 0){
+                check = false;
+                StartCoroutine(Approach(ind, speed, Dmg));
+            }
         }
+        
     }
 
 
