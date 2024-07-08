@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour{
 
     // Link EnemySO
     public EnemySO enemy;
@@ -12,10 +10,23 @@ public class Enemy : MonoBehaviour {
 
     private Entity entity;
     private EnemyDespawn enemyDespawn;
+    public EnemyAttack enemyAttack;
+
     void Start(){
         entity = GetComponent<Entity>();
         enemyDespawn = GetComponent<EnemyDespawn>();
+        enemyAttack = GetComponent<EnemyAttack>();
+
+        if(enemy.enemyType == EnemyType.Combat){
+            StartCoroutine(enemyAttack.Approach(1, enemy.speed, enemy.Dmg));
+        }
+
+        if(enemy.enemyType == EnemyType.Range){
+           StartCoroutine(enemyAttack.Approach(2, enemy.speed, enemy.Dmg));
+        }
     }
+
+
     
     // Destroy GetItem
     ItemProfileSO GetDroppedItem(){
@@ -48,10 +59,4 @@ public class Enemy : MonoBehaviour {
         }  
     }
 
-
-
-
-
-
-    
 }

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///  Store some useful value to choice
+/// </summary>
 public enum ItemType
 {
    None,

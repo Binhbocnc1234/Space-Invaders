@@ -119,7 +119,7 @@ public class Test : MonoBehaviour
                 han = false;
             }
             else{
-                Debug.Log("KAKA");
+                // Debug.Log("KAKA");
                 han = true;
                 followSpeed = 0;
                 transform.rotation = Quaternion.identity;

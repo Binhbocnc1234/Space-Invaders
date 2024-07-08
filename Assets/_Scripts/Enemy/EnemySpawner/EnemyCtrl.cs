@@ -12,10 +12,6 @@ public class EnemyCtrl : MonoBehaviour, ITemp
     [SerializeField] protected EnemySpawner enemySpawner;
     public EnemySpawner EnemySpawner { get => enemySpawner; }
 
-
- 
-
-
     protected virtual void LoadComponents(){
      this.LoadEnemySpawner(); 
    }

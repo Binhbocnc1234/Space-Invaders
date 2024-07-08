@@ -47,7 +47,9 @@ public class Entity : MonoBehaviour{
     /// </summary>
     /// <returns> True if Entity'health is equal to zero after receive damage </returns>
     public virtual bool GetDamage(float amount){
+        
         health -= (int)(amount*(600.0f/(600.0f+armor)));
+        Debug.Log(health);
         return this.health <= 0;
     }
 
