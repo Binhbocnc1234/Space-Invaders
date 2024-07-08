@@ -29,30 +29,28 @@ public class WaveManager : MonoBehaviour
 
     private List<EnemyWave> enemyWaves = new List<EnemyWave>();
 
-    public List<EnemyWave> GetList()
-    {
+
+
+    public List<EnemyWave> GetList(){
         return enemyWaves;
     }
 
-    public void Reset()
-    {
+    public void Reset(){
         this.LoadComponents();
     }
 
-    protected void LoadComponents()
-    {
+    protected void LoadComponents(){
         LoadMap();
         LoadEnemy();
     }
 
-    protected void LoadEnemy()
-    {
+    protected void LoadEnemy(){
         // Clear existing enemyWaves list
         enemyWaves.Clear();
 
         for (int i = 0; i < endWave; i++)
         {
-            string path = $"Enemy/EnemySO/{MapName}/Wave{i + 1}";
+            string path = $"Enemy/Enemy&Map/{MapName}/Wave{i + 1}";
             EnemySO[] enemySOArray = Resources.LoadAll<EnemySO>(path);
 
             if (enemySOArray != null && enemySOArray.Length > 0)
@@ -72,8 +70,7 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    protected void LoadMap()
-    {
+    protected void LoadMap(){
         waveData = Resources.Load<WaveData>("Wave/" + MapName);
         if (waveData == null)
         {
@@ -81,14 +78,20 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    public EnemyWave Decrease(EnemyWave e)
-    {
+    public EnemyWave Decrease(EnemyWave e){
         e.num -= 1;
+        if(e.num <= 0){
+            ++wave;
+        }
         return e;
     }
 
-    void Start()
-    {
+    void Start(){
         Reset();
     }
+
+    public Transform GetRandPos(){
+      return transform.GetChild(Random.Range(0, 4));
+    }
+
 }

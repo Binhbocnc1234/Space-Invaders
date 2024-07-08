@@ -5,9 +5,9 @@ using UnityEngine;
 public class Despawn : MonoBehaviour
 {
 
-    [SerializeField] protected float disLimit = 20f;
-    [SerializeField] protected float distance = 0;
-    [SerializeField] protected Transform mainCam;
+    protected float disLimit = 20f;
+    protected float distance = 0;
+    protected Transform mainCam;
     
     protected virtual void FixedUpdate(){
         this.Despawning();
@@ -28,10 +28,10 @@ public class Despawn : MonoBehaviour
     }
     
     protected virtual bool CanDespawn(){
-        this.distance = Vector2.Distance(transform.position, this.mainCam.position);
-        if(this.distance > this.disLimit){
-            return true;
-        }
+        // this.distance = Vector2.Distance(transform.position, this.mainCam.position);
+        // if(this.distance > this.disLimit){
+        //     return true;
+        // }
         return false;
     }
 

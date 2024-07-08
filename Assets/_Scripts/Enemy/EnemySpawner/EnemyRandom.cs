@@ -6,7 +6,7 @@ using Dreamteck.Splines;
 public class EnemyRandom : Spawner
 {
   public GameObject EnemyModel;
-  protected virtual void Start(){
+  protected virtual void Awake(){
     StartCoroutine(EnemyTimer());
   }
 
@@ -33,27 +33,74 @@ public class EnemyRandom : Spawner
       else if(WaveManager.Instance.wave > WaveManager.Instance.endWave){
         return;
       }
+
+      // Random EnemySO
       var lis = WaveManager.Instance.GetList();
       int rand = Random.Range(0, lis[WaveManager.Instance.wave].spawnList.Count);
 
       EnemySO randEnemy = lis[WaveManager.Instance.wave].spawnList[rand];
 
-      ChangeModel(EnemyModel, randEnemy);
+      Transform pos = WaveManager.Instance.GetRandPos();
+      // pos.position = new Vector3(
+      //   Mathf.Min(pos.position.x + Random.Range(-3f, 3f), limit),
+      //   Mathf.Min(pos.position.y + Random.Range(-3f, 3f), limit),
+      //   pos.position.z
+      // );
 
+      float x = Random.Range(0f, 10f);
+      int check = Random.Range(0, 4);
 
-      Transform obj = Spawn(EnemyModel.GetComponent<Transform>(), Vector3.zero, Quaternion.identity);
+      if(check == 0){
+          pos.position = new Vector3(
+            -x,
+            -Mathf.Sqrt(100 - x*x),
+            pos.position.z
+          );
+      }
+      else if(check == 1){
+          pos.position = new Vector3(
+            x,
+            Mathf.Sqrt(100 - x*x),
+            pos.position.z
+          );
+      }
+      else if(check == 2){
+          pos.position = new Vector3(
+            -x,
+            Mathf.Sqrt(100 - x*x),
+            pos.position.z
+          );
+      }
+      else if(check == 3){
+          pos.position = new Vector3(
+            x,
+            -Mathf.Sqrt(100 - x*x),
+            pos.position.z
+          );
+      }
+
+      
+      EnemyModel.transform.Find("DamageReceive").GetComponent<Enemy>().enemy = randEnemy;
+      EnemyModel.transform.Find("Model").gameObject.GetComponent<SpriteRenderer>().sprite = randEnemy.sprite;
+      
+
+      Transform obj = Spawn(EnemyModel.GetComponent<Transform>(), pos.position, Quaternion.identity);
       obj.gameObject.SetActive(true);
     
       lis[WaveManager.Instance.wave] = WaveManager.Instance.Decrease(lis[WaveManager.Instance.wave]);
     
   }
 
-  protected virtual void ChangeModel(GameObject model, EnemySO e){
-    SplineFollower follower = model.GetComponent<SplineFollower>();
-    follower.followSpeed = e.speed;
-    follower.spline = e.typeMove;
 
-  }
+
+  // protected virtual void ChangeModel(GameObject model, EnemySO e){
+  //   SplineFollower follower = model.GetComponent<SplineFollower>();
+  //   follower.followSpeed = e.speed;
+  //   follower.spline = e.typeMove;
+
+  // }
+
+  
 
   protected virtual void EnemyBossSpawning(){
 

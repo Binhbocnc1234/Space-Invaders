@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5220862746423271601}
-  - component: {fileID: 2701203848796787644}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -25,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5832589723842277634}
   m_LocalRotation: {x: 0.5958208, y: 0.38078552, z: 0.38078552, w: 0.5958208}
-  m_LocalPosition: {x: -9.82611, y: 5.1074505, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34,124 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2701203848796787644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5832589723842277634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ddc1a2536715a24095c464a2c394d5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updateMethod: 0
-  _spline: {fileID: 35681352734102270, guid: 137357e3c5d49fa42a7c5fe99887c81d, type: 3}
-  _autoUpdate: 1
-  _rotationModifier:
-    blend: 1
-    useClippedPercent: 0
-    keys: []
-  _offsetModifier:
-    blend: 1
-    useClippedPercent: 0
-    keys: []
-  _colorModifier:
-    blend: 1
-    useClippedPercent: 0
-    keys: []
-  _sizeModifier:
-    blend: 1
-    useClippedPercent: 0
-    keys: []
-  _clipFromSample:
-    position: {x: -9.82611, y: 5.1074505, z: 0}
-    up: {x: 0, y: 0, z: 1}
-    forward: {x: 0.90751964, y: -0.42000955, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0
-  _clipToSample:
-    position: {x: 18.302324, y: 6.0195217, z: 0}
-    up: {x: 0, y: 0, z: 1}
-    forward: {x: 0.9147547, y: 0.40400976, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 1
-  _loopSamples: 0
-  _clipFrom: 0
-  _clipTo: 1
-  animClipFrom: 0
-  animClipTo: 1
-  multithreaded: 0
-  buildOnAwake: 1
-  buildOnEnable: 0
-  applyDirectionRotation: 1
-  useTriggers: 0
-  triggerGroup: 0
-  _direction: 1
-  _dontLerpDirection: 0
-  _physicsMode: 0
-  _motion:
-    _hasOffset: 0
-    _hasRotationOffset: 0
-    _offset: {x: 0, y: 0}
-    _rotationOffset: {x: 0, y: 0, z: 0}
-    _baseScale: {x: 1, y: 1, z: 1}
-    _2dMode: 0
-    velocityHandleMode: 0
-    applyPositionX: 1
-    applyPositionY: 1
-    applyPositionZ: 1
-    applyPosition2D: 1
-    retainLocalPosition: 0
-    direction: 1
-    applyRotationX: 1
-    applyRotationY: 1
-    applyRotationZ: 1
-    applyRotation2D: 1
-    retainLocalRotation: 0
-    applyScaleX: 0
-    applyScaleY: 0
-    applyScaleZ: 0
-    targetUser: {fileID: 2701203848796787644}
-  targetRigidbody: {fileID: 0}
-  targetRigidbody2D: {fileID: 0}
-  targetTransform: {fileID: 5220862746423271601}
-  _result:
-    position: {x: -9.82611, y: 5.1074505, z: 0}
-    up: {x: 0, y: 0, z: 1}
-    forward: {x: 0.90751964, y: -0.42000955, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0
-  _finalResult:
-    position: {x: -9.82611, y: 5.1074505, z: 0}
-    up: {x: 0, y: 0, z: 1}
-    forward: {x: 0.90751964, y: -0.42000955, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0
-  wrapMode: 0
-  followMode: 0
-  autoStartPosition: 0
-  _follow: 1
-  _startPosition: 0
-  preserveUniformSpeedWithOffset: 0
-  _followSpeed: 1.5
-  _followDuration: 1
-  _speedModifier:
-    blend: 1
-    useClippedPercent: 0
-    keys: []
-  _unityOnEndReached:
-    m_PersistentCalls:
-      m_Calls: []
-  _unityOnBeginningReached:
-    m_PersistentCalls:
-      m_Calls: []
-  reachedEndOfPath: 0
 --- !u!1 &6839000992056849579
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,8 +46,9 @@ GameObject:
   - component: {fileID: 7103551554237470847}
   - component: {fileID: 5165080682189070803}
   - component: {fileID: 912111605416295021}
+  - component: {fileID: 1347619352986538907}
   m_Layer: 0
-  m_Name: 'DamageReceive '
+  m_Name: DamageReceive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +62,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6839000992056849579}
   m_LocalRotation: {x: -0.5227491, y: -0.47616535, z: 0.47616535, w: 0.52274907}
-  m_LocalPosition: {x: 21.796621, y: -0.022727966, z: 1.5376806}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -234,7 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7ad80d4faa9dc4c95f5932ff5398d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: 80488ce709749c64d95e6b658c6922f5, type: 2}
+  enemy: {fileID: 11400000, guid: 54dbdebfe0919fd47949a548486d187c, type: 2}
+  enemyAttack: {fileID: 1347619352986538907}
 --- !u!114 &5165080682189070803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,9 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b0f2d48c2607b4b9f61becf5fdd697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
+  team: 1
   entityName: 
-  mainHealth: 0
+  mainHealth: 100
   health: -1
   armor: 0
 --- !u!114 &912111605416295021
@@ -264,9 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e1b1bc3f330224589e6ab5bfb57de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disLimit: 17
-  distance: 0
-  mainCam: {fileID: 6905174456712144457, guid: 161047bd3d08738469b0a212e79b2e88, type: 3}
+--- !u!114 &1347619352986538907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839000992056849579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d76b4fffe126241933f34f6ceb6eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7877971406701131920
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7877971406701131920}
   m_LocalRotation: {x: -0.7392773, y: -0.67339796, z: 0.0013881752, w: 0.0015239337}
-  m_LocalPosition: {x: 21.90161, y: 1.7451744, z: 1.5376805}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.1169674, y: 2.2114387, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
